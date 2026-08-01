@@ -15,20 +15,37 @@ document.addEventListener('DOMContentLoaded',function(){
    document.documentElement.dataset.mode=next;
    try{localStorage.setItem('spin-mode',next)}catch(e){}
    b.textContent=lab();});}
- // record-page gallery: crossfade every 4.5s, pause on hover, dots jump.
- // prefers-reduced-motion stops the auto-advance; dots still work.
- var rot=document.querySelector('.rot');if(!rot)return;
- var fs=rot.querySelectorAll('.rf');if(fs.length<2)return;
- var ds=rot.querySelectorAll('.rdots i'),i=0,t=null;
- var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
- function go(n){fs[i].classList.remove('on');if(ds[i])ds[i].classList.remove('on');
-  i=(n+fs.length)%fs.length;
-  fs[i].classList.add('on');if(ds[i])ds[i].classList.add('on');}
- function start(){if(!still&&!t)t=setInterval(function(){go(i+1)},4500);}
- function stop(){if(t){clearInterval(t);t=null;}}
- rot.addEventListener('pointerenter',stop);
- rot.addEventListener('pointerleave',start);
- for(var k=0;k<ds.length;k++)(function(k){
-  ds[k].addEventListener('click',function(e){e.preventDefault();go(k);});})(k);
- start();});
+ // record-page contact sheet: the plate changes only when asked. The new
+ // image is decoded BEFORE it is swapped in, so the plate never blanks.
+ var gal=document.querySelector('.rgal');if(!gal)return;
+ var hero=gal.querySelector('.rhero'),himg=hero&&hero.querySelector('img');
+ var bs=gal.querySelectorAll('.rcs button');
+ if(!hero||!himg||!bs.length)return;
+ var cur=0,seq=0;
+ function pick(k){
+  if(k<0||k>=bs.length)return;
+  var full=bs[k].getAttribute('data-full');
+  // token: click a slow image then a fast one and the slow load must NOT
+  // win the swap — otherwise the plate shows an image the sheet says is
+  // not selected.
+  var mine=++seq;
+  function show(){if(mine!==seq)return;himg.src=full;hero.setAttribute('href',full);}
+  var pre=new Image();
+  pre.onload=show;pre.onerror=show;
+  pre.src=full;
+  if(pre.complete)show();
+  for(var j=0;j<bs.length;j++)bs[j].setAttribute('aria-pressed',j===k?'true':'false');
+  cur=k;
+ }
+ for(var k2=0;k2<bs.length;k2++)(function(k2){
+  bs[k2].addEventListener('click',function(){pick(k2)});
+ })(k2);
+ // left/right walk the sheet once a tile has focus
+ gal.querySelector('.rcs').addEventListener('keydown',function(e){
+  var d=e.key==='ArrowRight'?1:(e.key==='ArrowLeft'?-1:0);
+  if(!d)return;
+  e.preventDefault();
+  var n=(cur+d+bs.length)%bs.length;
+  pick(n);bs[n].focus();
+ });});
 })();
