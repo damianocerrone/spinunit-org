@@ -63,12 +63,16 @@ co-created <a class="xl" href="https://urbanistai.com">UrbanistAI</a>.</p></div>
 <script>
 (function(){
 "use strict";
+// Once per SESSION, not once forever: a start screen should greet each visit,
+// not only the first ever — and a forever-flag hid the gate from the person
+// reviewing it. #gate in the URL always summons it.
 var KEY="spin-gate-seen";
-var seen=null;try{seen=localStorage.getItem(KEY)}catch(e){}
-if(seen)return;
+var force=location.hash==="#gate";
+var seen=null;try{seen=sessionStorage.getItem(KEY)}catch(e){}
+if(seen&&!force)return;
 document.documentElement.setAttribute("data-gate","1");
 function dismiss(){
-  try{localStorage.setItem(KEY,"1")}catch(e){}
+  try{sessionStorage.setItem(KEY,"1")}catch(e){}
   document.documentElement.removeAttribute("data-gate");
 }
 document.addEventListener("keydown",function(e){if(e.key==="Escape")dismiss();});
