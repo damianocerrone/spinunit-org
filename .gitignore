@@ -8,3 +8,5 @@ _pdfcache/
 _old-scrape/
 .DS_Store
 nohup.out
+__pycache__/
+_covercache/
