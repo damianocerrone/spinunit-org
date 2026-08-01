@@ -10,7 +10,7 @@ since 2012. The office, the platforms (CoPlanAI, UrbanistAI), and every client o
 
 <div class="gate" role="main" aria-label="SPIN Unit — start">
   <div class="g-top"><span class="g-wm">SPIN Unit</span>
-    <a class="g-skip ap" href="web/" target="_blank" rel="noopener">Skip — straight to the repository →</a></div>
+    <a class="g-skip ap" href="web/about.html" target="_blank" rel="noopener">About →</a></div>
   <div class="g-cols">
     <a class="g-col" href="web/" target="_blank" rel="noopener">
       <span class="g-eb">The office</span>
@@ -32,7 +32,7 @@ since 2012. The office, the platforms (CoPlanAI, UrbanistAI), and every client o
     <div class="g-col">
       <span class="g-eb">The clients</span>
       <span class="g-h">Our clients and partners.</span>
-      <div class="g-fig"><canvas id="gCanvas" aria-hidden="true"></canvas></div>
+      <div class="g-fig"><svg id="gSvg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"></svg></div>
       <div class="g-key" role="group" aria-label="Client sectors">
         <button class="g-krow" data-sec="pub"><i class="k-pub"></i><span class="kn">Public sector</span>
           <span class="kt">programs and solutions for the commons</span><span>46</span></button>
@@ -44,61 +44,76 @@ since 2012. The office, the platforms (CoPlanAI, UrbanistAI), and every client o
       <span class="g-cap">Every client since 2012 · 93 organisations · closer to the centre = more engagements · hover to read, click to pin</span>
     </div>
   </div>
-  <div class="g-legend"><b>Sources</b>
-    <button class="g-arm ap" data-arm="S">S · Research</button>
-    <button class="g-arm ap" data-arm="C">C · CoPlanAI</button>
-    <button class="g-arm ap" data-arm="U">U · UrbanistAI</button>
-    <span>◉ ink core = commissioned research and platform (BOLT · CITY OF TALLINN · FORUM VIRIUM HELSINKI · UNDP KOSOVO)</span>
+  <div class="g-legend">
+    <span><b>SPINUNIT Lab Oy</b> · Mechelininkatu 23, 00100 Helsinki, Finland</span>
+    <span><b>SPINUNIT OÜ</b> · Keapa, Patika küla, Rae vald, Harjumaa, Estonia, 75316</span>
+    <a href="mailto:spin@spinunit.org">spin@spinunit.org</a>
   </div>
 </div>
 <script>var GATE_ORGS=[{"n": "City of Tallinn", "c": 9, "sec": "pub", "src": "SU"}, {"n": "UNDP", "c": 5, "sec": "pub", "src": "S"}, {"n": "Strelka KB", "c": 4, "sec": "pri", "src": "S"}, {"n": "Association of Municipalities of Harju County", "c": 3, "sec": "pub", "src": "S"}, {"n": "Bolt", "c": 3, "sec": "pri", "src": "SU"}, {"n": "Estonia Ministry of Climate", "c": 3, "sec": "pub", "src": "U"}, {"n": "Luleå University of Technology", "c": 3, "sec": "aca", "src": "CU"}, {"n": "City of Jyväskylä", "c": 2, "sec": "pub", "src": "U"}, {"n": "City of Turku", "c": 2, "sec": "pub", "src": "S"}, {"n": "CityLab Berlin", "c": 2, "sec": "pub", "src": "U"}, {"n": "Demos Helsinki", "c": 2, "sec": "pri", "src": "S"}, {"n": "Estonian Academy of Arts", "c": 2, "sec": "aca", "src": "S"}, {"n": "Estonian Centre of Architecture", "c": 2, "sec": "pub", "src": "S"}, {"n": "Estonian Ministry of Finance", "c": 2, "sec": "pub", "src": "S"}, {"n": "Forum Virium Helsinki", "c": 2, "sec": "pub", "src": "SU"}, {"n": "GIZ", "c": 2, "sec": "pub", "src": "CU"}, {"n": "Humankind", "c": 2, "sec": "pri", "src": "U"}, {"n": "Municipality of Sipoo", "c": 2, "sec": "pub", "src": "S"}, {"n": "TELT", "c": 2, "sec": "pub", "src": "S"}, {"n": "Tallinn Technical University", "c": 2, "sec": "aca", "src": "U"}, {"n": "UNDP Istanbul Regional Hub", "c": 2, "sec": "pub", "src": "U"}, {"n": "UNDP Kosovo", "c": 2, "sec": "pub", "src": "SU"}, {"n": "University of Turku", "c": 2, "sec": "aca", "src": "U"}, {"n": "ALA Architects", "c": 1, "sec": "pri", "src": "S"}, {"n": "ARS Project", "c": 1, "sec": "pri", "src": "S"}, {"n": "Aalto University", "c": 1, "sec": "aca", "src": "S"}, {"n": "Alicante University", "c": 1, "sec": "aca", "src": "S"}, {"n": "Architects' Council of Europe", "c": 1, "sec": "pri", "src": "U"}, {"n": "BABLE Smart Cities", "c": 1, "sec": "pri", "src": "U"}, {"n": "Baltic Environmental Forum Estonia", "c": 1, "sec": "pub", "src": "S"}, {"n": "CIVINET Greece", "c": 1, "sec": "pub", "src": "U"}, {"n": "City of Helsinki", "c": 1, "sec": "pub", "src": "U"}, {"n": "City of Lahti", "c": 1, "sec": "pub", "src": "U"}, {"n": "City of Narva", "c": 1, "sec": "pub", "src": "S"}, {"n": "City of Pärnu", "c": 1, "sec": "pub", "src": "S"}, {"n": "City of Tartu", "c": 1, "sec": "pub", "src": "S"}, {"n": "City of Warsaw", "c": 1, "sec": "pub", "src": "S"}, {"n": "City of Wiesbaden", "c": 1, "sec": "pub", "src": "C"}, {"n": "Cloudberry Communications AB", "c": 1, "sec": "pri", "src": "U"}, {"n": "Dinnomo", "c": 1, "sec": "pri", "src": "U"}, {"n": "Dubai Roads and Transport Authority (RTA)", "c": 1, "sec": "pub", "src": "U"}, {"n": "ESRI Italy", "c": 1, "sec": "pri", "src": "U"}, {"n": "EY", "c": 1, "sec": "pri", "src": "S"}, {"n": "Estonian Ministry of Economic Affairs", "c": 1, "sec": "pub", "src": "S"}, {"n": "Estonian Museum of Architecture", "c": 1, "sec": "pub", "src": "S"}, {"n": "Estonian Museum of Natural History", "c": 1, "sec": "pub", "src": "U"}, {"n": "Estonian Police and Border Guard Board", "c": 1, "sec": "pub", "src": "S"}, {"n": "European Commission", "c": 1, "sec": "pub", "src": "S"}, {"n": "Finnish Strategic Research Council", "c": 1, "sec": "pub", "src": "U"}, {"n": "Fondazione Rusconi Ghigi", "c": 1, "sec": "pri", "src": "C"}, {"n": "Fyma", "c": 1, "sec": "pri", "src": "S"}, {"n": "GoTech World", "c": 1, "sec": "pri", "src": "U"}, {"n": "Group NAO", "c": 1, "sec": "pri", "src": "U"}, {"n": "Hakaniemi Design Company Oy Ltd", "c": 1, "sec": "pri", "src": "U"}, {"n": "Helsingin Kaupunkitilat", "c": 1, "sec": "pub", "src": "U"}, {"n": "ICLEI", "c": 1, "sec": "pub", "src": "U"}, {"n": "Intrestik", "c": 1, "sec": "pri", "src": "U"}, {"n": "Kuntaliitto", "c": 1, "sec": "pub", "src": "S"}, {"n": "Kyiv School of Economics", "c": 1, "sec": "aca", "src": "U"}, {"n": "Livady", "c": 1, "sec": "pri", "src": "S"}, {"n": "Mainor Ülemiste", "c": 1, "sec": "pri", "src": "S"}, {"n": "MfW Studio", "c": 1, "sec": "pri", "src": "U"}, {"n": "Milano Digital Week", "c": 1, "sec": "pub", "src": "U"}, {"n": "Ministry of the Environment", "c": 1, "sec": "pub", "src": "S"}, {"n": "Momentum", "c": 1, "sec": "pri", "src": "U"}, {"n": "Olomuc University", "c": 1, "sec": "aca", "src": "S"}, {"n": "Oman Ministry of Housing and Urban Planning", "c": 1, "sec": "pub", "src": "U"}, {"n": "Oulu University", "c": 1, "sec": "aca", "src": "S"}, {"n": "OÜ Revino Aiand", "c": 1, "sec": "pri", "src": "S"}, {"n": "Philipps-Universität Marburg", "c": 1, "sec": "aca", "src": "S"}, {"n": "Princeton University", "c": 1, "sec": "aca", "src": "S"}, {"n": "SSL Prostor", "c": 1, "sec": "pri", "src": "S"}, {"n": "SYKE", "c": 1, "sec": "pub", "src": "S"}, {"n": "Sapienza University of Rome", "c": 1, "sec": "aca", "src": "S"}, {"n": "Seventhill", "c": 1, "sec": "pri", "src": "U"}, {"n": "Sitowise", "c": 1, "sec": "pri", "src": "U"}, {"n": "Sweco", "c": 1, "sec": "pri", "src": "U"}, {"n": "TEM (Ministry of Economy and Employment)", "c": 1, "sec": "pub", "src": "S"}, {"n": "Tuusula", "c": 1, "sec": "pub", "src": "S"}, {"n": "UAE Prime Minister Office", "c": 1, "sec": "pub", "src": "U"}, {"n": "UNDP Accelerator Labs - Indonesia", "c": 1, "sec": "pub", "src": "U"}, {"n": "UNDP North Macedonia", "c": 1, "sec": "pub", "src": "U"}, {"n": "UNDP Panama Accelerator Lab", "c": 1, "sec": "pub", "src": "U"}, {"n": "Universita degli Studi di Milano Statale", "c": 1, "sec": "aca", "src": "U"}, {"n": "University of Salford", "c": 1, "sec": "aca", "src": "S"}, {"n": "University of Twente", "c": 1, "sec": "aca", "src": "U"}, {"n": "Urban Design London", "c": 1, "sec": "pub", "src": "S"}, {"n": "Urban Redevelopment Authority (URA), Singapore", "c": 1, "sec": "pub", "src": "U"}, {"n": "UrbanizeHub", "c": 1, "sec": "pri", "src": "U"}, {"n": "Wild Mazzini", "c": 1, "sec": "pri", "src": "S"}, {"n": "YPO Greater Europe Chapter", "c": 1, "sec": "pri", "src": "U"}, {"n": "Zamanand gUG", "c": 1, "sec": "pri", "src": "U"}, {"n": "karres+brands", "c": 1, "sec": "pri", "src": "S"}];</script>
 <script>
 (function(){
 "use strict";
-// The gate is its own page now — nothing to show or dismiss, no storage.
-// The doors are plain links that open in a new tab.
-var canvas=document.getElementById("gCanvas");
-if(!canvas||!window.GATE_ORGS)return;
-var host=canvas.parentElement;
+// The gate is its own page — doors are plain links opening new tabs.
+// The constellation is SVG: no canvas, so Safari's advanced privacy
+// protections have nothing to noise and no banner to show. Colours, alphas
+// and blend modes all live in CSS custom properties, so light/dark needs
+// no JS at all.
+var svg=document.getElementById("gSvg");
+if(!svg||!window.GATE_ORGS)return;
+var NS="http://www.w3.org/2000/svg";
+var host=svg.parentElement;
 var tip=document.createElement("div");tip.className="g-tip";host.appendChild(tip);
-var ctx=canvas.getContext("2d"),W,H,DPR=Math.min(devicePixelRatio||1,2);
-var pts=[],iso=null,arm=null,pinned=null;
 var HOME={pub:Math.PI,aca:-Math.PI/3,pri:Math.PI/3};
-function tok(n){return getComputedStyle(document.documentElement)
-  .getPropertyValue(n).trim();}
-function rgba(cs,a){              // '#rrggbb' token -> rgba() at the given alpha
-  cs=String(cs).trim();
-  if(cs.charAt(0)==="#"){var h=cs.slice(1);
-    if(h.length===3)h=h.replace(/./g,function(c){return c+c});
-    var n=parseInt(h,16);
-    if(!isNaN(n))return "rgba("+(n>>16&255)+","+(n>>8&255)+","+(n&255)+","+a+")";}
-  return cs;}
-function isDark(){                // trust the bg token, not a class name
-  var h=tok("--bg").replace("#","");if(h.length===3)h=h.replace(/./g,function(c){return c+c});
-  var n=parseInt(h,16);if(isNaN(n))return false;
-  return (0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))<128;}
+var pts=[],iso=null,pinned=null,L=null;
+function el(n,at,parent){var e=document.createElementNS(NS,n);
+  for(var k in at)e.setAttribute(k,at[k]);if(parent)parent.appendChild(e);return e;}
 function tier(c){return c>=4?2:(c>=2?1:0);}   // 3 anchors / 20 repeats / 70 singles
 
+// ---- static scaffolding, built once ----
+var defs=el("defs",{},svg);
+["pub","aca","pri"].forEach(function(s){
+  var g=el("radialGradient",{id:"gh-"+s},defs);
+  el("stop",{offset:"0","stop-color":"var(--g"+s+")","stop-opacity":"1"},g);
+  el("stop",{offset:"0.5","stop-color":"var(--g"+s+")","stop-opacity":"0.82"},g);
+  el("stop",{offset:"1","stop-color":"var(--g"+s+")","stop-opacity":"0"},g);
+});
+var rim=el("circle",{fill:"none",stroke:"var(--rule)","stroke-width":"1",
+  "stroke-dasharray":"2 4"},svg);
+var haloL=el("g",{},svg),coreL=el("g",{},svg),pupilL=el("g",{},svg);
+var markG=el("g",{fill:"var(--ink)"},svg);
+var markBar=el("rect",{},markG),markDots=[];
+for(var md=0;md<6;md++)markDots.push(el("circle",{},markG));
+GATE_ORGS.forEach(function(c){
+  var t=tier(c.c);
+  var p={c:c,
+    h:el("circle",{"class":"gh",fill:"url(#gh-"+c.sec+")"},haloL),
+    k:el("circle",{"class":"gc",fill:"var(--g"+c.sec+")"},coreL),
+    u:(c.src&&c.src.length>1)?el("circle",{"class":"gu",fill:"var(--ink)"},pupilL):null};
+  p.h.style.setProperty("--t","var(--ga"+t+")");
+  p.k.style.setProperty("--t","var(--gc"+t+")");
+  pts.push(p);
+});
+
 function layout(){
-  var r=canvas.getBoundingClientRect();
+  var r=host.getBoundingClientRect();
   if(!r.width||!r.height)return;
-  W=r.width;H=r.height;canvas.width=W*DPR;canvas.height=H*DPR;
-  ctx.setTransform(DPR,0,0,DPR,0,0);
+  var W=r.width,H=r.height;
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
   var cx=W/2,cy=H*0.5,R=Math.min(W,H)*0.46;
-  // RADIUS ENCODES DEPTH: the more engagements (and both-sides work), the
-  // closer an organisation sits to the mark; single engagements ring the rim.
   var cmax=1;GATE_ORGS.forEach(function(c){if(c.c>cmax)cmax=c.c});
-  pts=GATE_ORGS.map(function(c){
-    var h=0;for(var k=0;k<c.n.length;k++){h=(h*31+c.n.charCodeAt(k))>>>0;}
+  pts.forEach(function(p){
+    var c=p.c,h=0;
+    for(var k=0;k<c.n.length;k++){h=(h*31+c.n.charCodeAt(k))>>>0;}
     var ang=HOME[c.sec]+((h%1000)/1000-0.5)*(Math.PI*0.52);
     var depth=Math.sqrt(Math.max(0,c.c-1))/Math.sqrt(Math.max(1,cmax-1));
     if(c.src.indexOf("S")>=0&&c.src.length>1)depth=Math.min(1,depth+0.25);
-    var tR=R*(0.30+(1-depth)*0.62);
+    p.tR=R*(0.30+(1-depth)*0.62);
     // area-true sqrt ramp, diameter ratio ~2.2:1; footprint padded so the
     // feathered fringes drawn at 1.5x overlap gently rather than by 5px
     var t=(cmax>1)?(c.c-1)/(cmax-1):0;
-    var r=R*(0.036+0.043*Math.sqrt(t));
-    return {c:c,tR:tR,x:cx+Math.cos(ang)*tR,y:cy+Math.sin(ang)*tR,r:r};
+    p.r=R*(0.036+0.043*Math.sqrt(t));
+    p.x=cx+Math.cos(ang)*p.tR;p.y=cy+Math.sin(ang)*p.tR;
   });
   // Static relaxation, run once: separate overlapping dots, hold each inside
   // its sector's third, keep the centre clear for the mark and everything
@@ -114,7 +129,6 @@ function layout(){
           p.x-=ux*push;p.y-=uy*push;q.x+=ux*push;q.y+=uy*push;}
       }
       var vx=p.x-cx,vy=p.y-cy,d2=Math.sqrt(vx*vx+vy*vy)||0.001;
-      // gentle spring toward the radius its engagement count has earned
       var want=d2+(p.tR-d2)*0.12;
       p.x=cx+vx/d2*want;p.y=cy+vy/d2*want;d2=want;
       var lo=inner+p.r,hi=outer-p.r;
@@ -127,60 +141,40 @@ function layout(){
         p.x=cx+Math.cos(na)*d2;p.y=cy+Math.sin(na)*d2;}
     }
   }
-  layout.cx=cx;layout.cy=cy;layout.R=R;
+  // write positions into the SVG
+  rim.setAttribute("cx",cx);rim.setAttribute("cy",cy);rim.setAttribute("r",R);
+  pts.forEach(function(p){
+    p.h.setAttribute("cx",p.x);p.h.setAttribute("cy",p.y);
+    p.h.setAttribute("r",p.r*1.5);
+    p.k.setAttribute("cx",p.x);p.k.setAttribute("cy",p.y);
+    p.k.setAttribute("r",p.r*0.62);
+    if(p.u){p.u.setAttribute("cx",p.x);p.u.setAttribute("cy",p.y);
+      p.u.setAttribute("r",Math.max(1.5,p.r*0.34));}
+  });
+  // the mark, on top of the calm centre
+  var s=Math.max(13,R*0.085);
+  markBar.setAttribute("x",cx-s*0.62);markBar.setAttribute("y",cy-s*0.75);
+  markBar.setAttribute("width",s*0.13);markBar.setAttribute("height",s*1.5);
+  var mi=0;
+  for(var rr=0;rr<3;rr++)for(var q2=0;q2<2;q2++){
+    var dd=markDots[mi++];
+    dd.setAttribute("cx",cx-s*0.15+q2*s*0.52);
+    dd.setAttribute("cy",cy-s*0.52+rr*s*0.52);
+    dd.setAttribute("r",s*0.21);
+  }
+  L={cx:cx,cy:cy,R:R};
 }
 
-function visible(p){return (!iso||p.c.sec===iso)&&(!arm||p.c.src.indexOf(arm)>=0);}
-
-function draw(){
-  if(!W)return;
-  var INK=tok("--ink"),RULE=tok("--rule");
-  var P={pub:tok("--gpub"),aca:tok("--gaca"),pri:tok("--gpri")};
-  var dk=isDark();
-  // three-step within-hue intensity ramp: singles / repeats / anchors
-  var A=dk?[0.16,0.27,0.42]:[0.19,0.31,0.45];
-  ctx.clearRect(0,0,W,H);
-  var cx=layout.cx,cy=layout.cy,R=layout.R;
-  // whispered armature: dashed hairline rim
-  ctx.strokeStyle=RULE;ctx.lineWidth=1;
-  if(ctx.setLineDash)ctx.setLineDash([2,4]);
-  ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.stroke();
-  if(ctx.setLineDash)ctx.setLineDash([]);
-  // pass 1: feathered halos, no outlines — multiply on light so the crowded
-  // centre self-deepens into a gravity well; screen on dark so it glows
-  ctx.globalCompositeOperation=dk?"screen":"multiply";
+function visible(p){return !iso||p.c.sec===iso;}
+function apply(){
   pts.forEach(function(p){
-    var a=A[tier(p.c.c)]*(visible(p)?1:0.10);
-    var cl=P[p.c.sec]||P.pub,halR=p.r*1.5;
-    var g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,halR);
-    g.addColorStop(0,rgba(cl,a));
-    g.addColorStop(0.5,rgba(cl,a*0.82));
-    g.addColorStop(1,rgba(cl,0));
-    ctx.fillStyle=g;
-    ctx.beginPath();ctx.arc(p.x,p.y,halR,0,7);ctx.fill();
+    var off=!visible(p);
+    p.h.classList.toggle("off",off);
+    p.k.classList.toggle("off",off);
+    if(p.u)p.u.classList.toggle("off",off);
   });
-  // pass 2: hard-edged cores — one crisp silhouette per mark
-  pts.forEach(function(p){
-    var ca=Math.min(1,A[tier(p.c.c)]*1.15)*(visible(p)?1:0.10);
-    ctx.fillStyle=rgba(P[p.c.sec]||P.pub,ca);
-    ctx.beginPath();ctx.arc(p.x,p.y,p.r*0.62,0,7);ctx.fill();
-  });
-  // pass 3: dual-arm ink pupils (research office AND platform) — replaces
-  // the old double ring
-  ctx.globalCompositeOperation="source-over";
-  pts.forEach(function(p){
-    if(!p.c.src||p.c.src.length<2)return;
-    ctx.fillStyle=rgba(INK,0.62*(visible(p)?1:0.12));
-    ctx.beginPath();ctx.arc(p.x,p.y,Math.max(1.5,p.r*0.34),0,7);ctx.fill();
-  });
-  // the mark, last — crisp over the calm centre
-  var s=Math.max(13,R*0.085);
-  ctx.fillStyle=INK;
-  ctx.fillRect(cx-s*0.62,cy-s*0.75,s*0.13,s*1.5);
-  for(var rr=0;rr<3;rr++)for(var q=0;q<2;q++){
-    ctx.beginPath();ctx.arc(cx-s*0.15+q*s*0.52,cy-s*0.52+rr*s*0.52,s*0.21,0,7);ctx.fill();}
-  if(pinned&&visible(pinned))showTip(pinned,true);
-  else if(pinned){pinned=null;tip.style.display="none";}
+  if(pinned&&!visible(pinned)){pinned=null;tip.style.display="none";}
+  if(pinned)showTip(pinned,true);
 }
 
 function showTip(p,pin){
@@ -191,46 +185,36 @@ function showTip(p,pin){
     (pin?"<br><span style='opacity:.7'>click elsewhere to release</span>":"");
 }
 function hit(ev){
-  var r=canvas.getBoundingClientRect(),mx=ev.clientX-r.left,my=ev.clientY-r.top,f=null;
+  var r=svg.getBoundingClientRect(),mx=ev.clientX-r.left,my=ev.clientY-r.top,f=null;
   pts.forEach(function(p){
     if(!visible(p))return;
     var dx=p.x-mx,dy=p.y-my;
-    if(dx*dx+dy*dy<Math.pow(p.r+5,2))f=p;});
+    if(dx*dx+dy*dy<Math.pow(Math.max(p.r,6)+4,2))f=p;});
   return f;
 }
-canvas.addEventListener("click",function(ev){
+svg.addEventListener("click",function(ev){
   var f=hit(ev);
   pinned=f===pinned?null:f;
   if(pinned)showTip(pinned,true);else tip.style.display="none";
 });
-canvas.addEventListener("pointermove",function(ev){
+svg.addEventListener("pointermove",function(ev){
   var f=hit(ev);
-  if(f){showTip(f,false);canvas.style.cursor="pointer";}
-  else if(pinned){showTip(pinned,true);canvas.style.cursor="default";}
-  else{tip.style.display="none";canvas.style.cursor="default";}
+  if(f){showTip(f,false);svg.style.cursor="pointer";}
+  else if(pinned){showTip(pinned,true);svg.style.cursor="default";}
+  else{tip.style.display="none";svg.style.cursor="default";}
 });
-canvas.addEventListener("pointerleave",function(){
+svg.addEventListener("pointerleave",function(){
   if(pinned)showTip(pinned,true);else tip.style.display="none";});
 document.querySelectorAll(".gate .g-krow").forEach(function(b){
   b.addEventListener("click",function(){
     iso=iso===b.dataset.sec?null:b.dataset.sec;
     document.querySelectorAll(".gate .g-krow").forEach(function(x){
       x.setAttribute("aria-pressed",String(x.dataset.sec===iso));});
-    draw();
+    apply();
   });
 });
-document.querySelectorAll(".gate .g-arm").forEach(function(b){
-  b.addEventListener("click",function(){
-    arm=arm===b.dataset.arm?null:b.dataset.arm;
-    document.querySelectorAll(".gate .g-arm").forEach(function(x){
-      x.setAttribute("aria-pressed",String(x.dataset.arm===arm));});
-    draw();
-  });
-});
-new MutationObserver(function(){draw()})
-  .observe(document.documentElement,{attributes:true,attributeFilter:["data-mode"]});
-layout();draw();
-addEventListener("resize",function(){layout();draw()});
+layout();
+addEventListener("resize",layout);
 })();
 </script>
 </body></html>
