@@ -169,6 +169,8 @@ footer{display:flex;justify-content:space-between;gap:16px;padding:16px 22px 22p
 .mark:hover{color:var(--ink);border-color:var(--ink)}
 .mark i{font-family:var(--mono);font-style:normal;font-size:9px;letter-spacing:0;
  text-transform:none;opacity:.7}
+.secnote{grid-column:1/-1;background:var(--bg);margin:0;padding:12px 20px;font-size:9px;
+ letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .hero .xl{border-bottom:2px solid var(--sp)}
 .hero .xl:hover{border-bottom-color:var(--ink)}
 
