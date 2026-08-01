@@ -94,9 +94,15 @@ main{max-width:1180px;margin:0 auto}
 .logos span{font-family:var(--narrow);font-weight:700;font-size:12.5px;letter-spacing:.08em;
  text-transform:uppercase;color:var(--dim)}
 .logos>div:hover span{color:var(--ink)}
-footer{display:flex;justify-content:space-between;gap:16px;padding:16px 22px 22px;
- font:400 9px/1.7 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--dim);
- flex-wrap:wrap;border-top:1px solid var(--rule);margin-top:34px}
+footer{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px 34px;
+ padding:24px 22px 30px;border-top:1.5px solid var(--ink);margin-top:44px;
+ background:var(--panel);color:var(--ink);font-size:13px;line-height:1.6}
+footer .fh{font:400 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+ color:var(--dim);display:block;margin-bottom:7px}
+footer b{font-weight:600;display:block}
+footer .fx{font-size:15px;font-weight:600;border-bottom:2px solid var(--sp)}
+footer .fx:hover{border-bottom-color:var(--ink)}
+footer a{color:inherit}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:16px 22px}
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
@@ -285,8 +291,11 @@ html[data-gate]{overflow:hidden}
 .gate .g-col:last-child{border-right:0}
 .gate button.g-col,.gate a.g-col{cursor:pointer;background:none;border-top:0;border-bottom:0;
  border-left:0;transition:background .2s,color .2s}
-/* the doors answer: coral ground, ink text — unmistakable */
-.gate a.g-col:hover,.gate a.g-col:focus-visible{background:var(--mv);color:var(--docink)}
+/* the doors answer in the theme's own colours: the office in cyan, the
+ platforms in green — dark ink text on both grounds, light and dark */
+.gate a.g-col:hover,.gate a.g-col:focus-visible{color:var(--docink)}
+.gate a.d-rep:hover,.gate a.d-rep:focus-visible{background:var(--sp)}
+.gate a.d-pla:hover,.gate a.d-pla:focus-visible{background:var(--sc)}
 .gate a.g-col:hover .g-eb,.gate a.g-col:hover .g-p,
 .gate a.g-col:focus-visible .g-eb,.gate a.g-col:focus-visible .g-p{color:var(--docink)}
 .gate a.g-col:hover .g-go,.gate a.g-col:focus-visible .g-go{border-color:var(--docink)}
