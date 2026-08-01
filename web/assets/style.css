@@ -138,6 +138,9 @@ footer a{color:inherit}
  overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .prd{display:grid;grid-template-columns:44px 1fr 200px 84px;gap:10px;padding:8px 22px;
  border-bottom:1px solid var(--hair);align-items:baseline}
+/* a class, not the [hidden] attribute — .prd{display:grid} would silently
+ beat the UA [hidden]{display:none} rule at equal specificity */
+.prd.hide{display:none}
 .prd:hover{background:var(--panel)}
 .prd .o{font:400 9.5px/1.4 var(--mono);color:var(--dim);text-align:right;overflow:hidden;
  white-space:nowrap;text-overflow:ellipsis}
