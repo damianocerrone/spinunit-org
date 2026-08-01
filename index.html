@@ -5,7 +5,7 @@
 <script src="assets/site.js"></script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232a2859'/%3E%3Ccircle cx='12' cy='10' r='3.2' fill='%23fff'/%3E%3Ccircle cx='20' cy='10' r='3.2' fill='%23fff'/%3E%3Ccircle cx='12' cy='17' r='3.2' fill='%23fff'/%3E%3Ccircle cx='20' cy='17' r='3.2' fill='%23fff'/%3E%3Ccircle cx='12' cy='24' r='3.2' fill='%23fff'/%3E%3Ccircle cx='20' cy='24' r='3.2' fill='%23fff'/%3E%3C/svg%3E">
 </head><body>
-<div class="nav"><span class="wm">SPIN Unit</span><nav class="lk"><a href="index.html" class="on">Home</a><a href="projects.html">Projects</a><a href="reports.html">Reports</a><a href="about.html">About</a><a href="publications.html">Publications</a></nav>
+<div class="nav"><a class="wm" href="index.html#gate" title="Back to the start screen">SPIN Unit</a><nav class="lk"><a href="index.html" class="on">Home</a><a href="projects.html">Projects</a><a href="reports.html">Reports</a><a href="about.html">About</a><a href="publications.html">Publications</a></nav>
 <button class="mode ap" id="mode">◐ DARK</button></div>
 <div class="legend"><span><i style="background:var(--mv)"></i><b>Mobility</b> 16</span><span><i style="background:var(--sp)"></i><b>Space</b> 23</span><span><i style="background:var(--sc)"></i><b>Society</b> 15</span><span><b>Uncategorised</b> 7</span><span class="doc"><i style="background:var(--doc)"></i><b>57 reports</b> to download</span></div><main><div class="hero">
 <p class="kick">Urban research &amp; innovation practice · Helsinki — Tallinn</p>
@@ -31,7 +31,7 @@ co-created <a class="xl" href="https://urbanistai.com">UrbanistAI</a>.</p></div>
       downloadable reports.</span>
       <span class="g-go ap">Enter the repository →</span>
     </button>
-    <a class="g-col" id="gDoorPlat" href="https://coplanai.com">
+    <a class="g-col" href="https://coplanai.com" target="_blank" rel="noopener">
       <span class="g-eb">The platforms</span>
       <span class="g-h">SPIN Unit develops and runs CoPlanAI.</span>
       <span class="g-p">A platform for collaborative urban planning — the method, productised.
@@ -69,18 +69,22 @@ co-created <a class="xl" href="https://urbanistai.com">UrbanistAI</a>.</p></div>
 var KEY="spin-gate-seen";
 var force=location.hash==="#gate";
 var seen=null;try{seen=sessionStorage.getItem(KEY)}catch(e){}
-if(seen&&!force)return;
-document.documentElement.setAttribute("data-gate","1");
+function show(){
+  document.documentElement.setAttribute("data-gate","1");
+  requestAnimationFrame(function(){if(typeof layout==="function"){layout();draw();}});
+}
 function dismiss(){
   try{sessionStorage.setItem(KEY,"1")}catch(e){}
   document.documentElement.removeAttribute("data-gate");
 }
+// the wordmark reopens the start screen; on other pages it is a plain link here
+addEventListener("hashchange",function(){if(location.hash==="#gate")show();});
+document.querySelectorAll("a.wm").forEach(function(a){
+  a.addEventListener("click",function(e){e.preventDefault();show();});
+});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")dismiss();});
 document.querySelectorAll("[data-gate-close]").forEach(function(b){
   b.addEventListener("click",dismiss);});
-var ext=document.getElementById("gDoorPlat");
-if(ext)ext.addEventListener("click",function(){try{sessionStorage.setItem(KEY,"1")}catch(e){}});
-
 var canvas=document.getElementById("gCanvas");
 if(!canvas||!window.GATE_ORGS)return;
 var host=canvas.parentElement;
@@ -223,6 +227,7 @@ document.querySelectorAll(".gate .g-arm").forEach(function(b){
 });
 new MutationObserver(function(){draw()})
   .observe(document.documentElement,{attributes:true,attributeFilter:["data-mode"]});
+if(!seen||force)show();
 layout();draw();
 addEventListener("resize",function(){layout();draw()});
 })();
