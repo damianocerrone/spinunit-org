@@ -14,7 +14,7 @@
  --rule:rgba(42,40,89,.18);--hair:rgba(42,40,89,.09);--doc:#f9c66b;--docink:#2a2859;
  --mv:#ff8274;--sp:#6fe9ff;--sc:#43f8b6}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.6 var(--sans);
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);
  -webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
@@ -39,7 +39,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .legend .doc i{border:1px solid var(--ink)}
 main{max-width:1180px;margin:0 auto}
 .hero{padding:54px 22px 40px;max-width:920px}
-.kick{font:400 10px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+.kick{font:400 13px/1.3 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
  margin:0 0 18px}
 .mission{font-size:clamp(21px,2.6vw,30px);line-height:1.42;letter-spacing:-.014em;margin:0}
 .mission b{font-weight:600}
@@ -83,6 +83,12 @@ main{max-width:1180px;margin:0 auto}
 .row .l i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
 .pdf{justify-self:start;font:700 9px/1 var(--mono);letter-spacing:.06em;padding:4px 6px;
  background:var(--doc);color:var(--docink);border:1px solid var(--ink);white-space:nowrap}
+/* projects.html only: the PDF badge takes the row's own lens colour instead
+ of a flat gold, so mobility/space/society reports are tellable apart in the
+ list before you click in. Same three-way contrast check as the download box. */
+.pdf.l-mv,.cpdf.l-mv{background:var(--mv)}
+.pdf.l-sp,.cpdf.l-sp{background:var(--sp)}
+.pdf.l-sc,.cpdf.l-sc{background:var(--sc)}
 .none{font:400 9px/1 var(--mono);color:var(--dim);opacity:.5}
 @media(max-width:640px){.hdr{display:none}.row{grid-template-columns:40px 1fr 60px}
  .row .c,.row .l{display:none}}
@@ -139,7 +145,7 @@ footer a{color:inherit}
 .prose{padding:34px 22px 8px;max-width:860px}
 .prose h1{font-size:clamp(22px,2.8vw,30px);line-height:1.25;letter-spacing:-.018em;margin:0 0 16px;
  font-weight:600;max-width:30ch}
-.prose p{font-size:14.5px;line-height:1.7;color:var(--dim);max-width:68ch;margin:0 0 14px}
+.prose p{font-size:16.5px;line-height:1.68;color:var(--dim);max-width:68ch;margin:0 0 15px}
 .prose p b{color:var(--ink);font-weight:500}
 .rb{padding:26px 22px 8px}
 .rn{font:400 9.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
@@ -147,13 +153,36 @@ footer a{color:inherit}
  letter-spacing:-.022em;max-width:30ch}
 .docs{margin:16px 0 0;border:2px solid var(--ink);background:var(--doc);color:var(--docink);
  max-width:660px}
-.dh{font:700 9px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;
+/* the download box takes its colour from the project's lens (Mobility/Space/
+ Society) instead of a fixed gold, so the file itself tells you which
+ category it belongs to before you've read a word. Docink (near-black/
+ near-white) stays legible on all three — checked 5.6:1 to 9.9:1 both modes. */
+.docs.l-mv{background:var(--mv)}
+.docs.l-sp{background:var(--sp)}
+.docs.l-sc{background:var(--sc)}
+.dh{font:600 9px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;
  border-bottom:1px solid var(--ink)}
-.dl{display:flex;justify-content:space-between;gap:12px;padding:8px 11px;font-size:12.5px;
- font-weight:500;color:inherit}
+.dl{display:flex;justify-content:space-between;gap:12px;padding:8px 11px;font:600 12.5px/1.4 var(--mono);
+ color:inherit}
 .dl+.dl{border-top:1px solid rgba(0,0,0,.22)}
-.dl span{font:400 9px/1.7 var(--mono);letter-spacing:.05em;white-space:nowrap}
+.dl span{font:600 9px/1.7 var(--mono);letter-spacing:.05em;white-space:nowrap}
 .dl:hover{background:rgba(0,0,0,.06)}
+/* record page: prose on the left, the gallery pinned to the right so the
+ two are read together rather than one after the other. Falls back to a
+ single column (no .rpage wrapper at all) on a page with no images. */
+.rpage{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,440px);
+ gap:0 40px;align-items:start;padding:0 22px 30px}
+.rleft{min-width:0}
+.rpage .rb{padding:26px 0 8px}
+.rpage .prose{padding:34px 0 8px;max-width:none}
+.rpage .rgal{padding:26px 0 4px;max-width:none}
+.rright{position:sticky;top:18px}
+@media(max-width:860px){
+ .rpage{display:block;padding:0}
+ .rpage .rb{padding:26px 22px 8px}
+ .rpage .prose{padding:34px 22px 8px;max-width:860px}
+ .rpage .rgal{padding:4px 22px 30px;max-width:980px}
+ .rright{position:static}}
 /* record page gallery: one large plate you drive from a contact sheet.
  Fixed aspect on the plate so swapping images never jumps the page, and
  object-fit:contain so a map is never cropped. */
