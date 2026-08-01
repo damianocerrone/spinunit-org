@@ -221,6 +221,13 @@ footer{display:flex;justify-content:space-between;gap:16px;padding:16px 22px 22p
 .op i{font-style:normal;font-size:9px;letter-spacing:.13em;text-transform:uppercase;
  color:var(--dim);font-weight:400}
 
+/* Soft-field constellation palette (chosen 2026-08-01): equal-luminance
+ pastels that sit with the indigo ink — periwinkle / sage-teal / terracotta.
+ Both polarities designed, not inverted; the toggle stamps data-mode. */
+:root{--gpub:#6975cd;--gaca:#4a9486;--gpri:#cb7660}
+@media (prefers-color-scheme:dark){:root{--gpub:#8896eb;--gaca:#6ec4b4;--gpri:#e89678}}
+:root[data-mode=dark]{--gpub:#8896eb;--gaca:#6ec4b4;--gpri:#e89678}
+:root[data-mode=light]{--gpub:#6975cd;--gaca:#4a9486;--gpri:#cb7660}
 .gate{position:fixed;inset:0;z-index:90;background:var(--bg);display:none;
  flex-direction:column}
 html[data-gate] .gate{display:flex}
@@ -265,9 +272,9 @@ html[data-gate]{overflow:hidden}
 .gate .g-krow:hover{background:var(--panel)}
 .gate .g-krow[aria-pressed=true]{background:var(--panel)}
 .gate .g-krow[aria-pressed=true] .kn{box-shadow:inset 0 -2px 0 var(--ink)}
-.gate .k-pub{background:color-mix(in srgb,var(--mv) 52%,var(--bg))}
-.gate .k-aca{background:color-mix(in srgb,var(--sp) 52%,var(--bg))}
-.gate .k-pri{background:color-mix(in srgb,var(--sc) 52%,var(--bg))}
+.gate .k-pub{background:color-mix(in srgb,var(--gpub) 45%,var(--bg))}
+.gate .k-aca{background:color-mix(in srgb,var(--gaca) 45%,var(--bg))}
+.gate .k-pri{background:color-mix(in srgb,var(--gpri) 45%,var(--bg))}
 .gate .g-cap{font:400 8.5px/1.6 var(--mono);letter-spacing:.11em;text-transform:uppercase;
  color:var(--dim);margin-top:9px}
 .gate .g-legend{display:flex;gap:14px;align-items:center;padding:10px 22px;
