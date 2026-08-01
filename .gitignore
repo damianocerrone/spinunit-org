@@ -1,0 +1,10 @@
+# product-only repo: pages + assets. Everything that is source, cache or
+# private data stays local.
+HANDOFF.md
+build.py
+build-report.txt
+data/
+_pdfcache/
+_old-scrape/
+.DS_Store
+nohup.out
