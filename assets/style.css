@@ -256,6 +256,15 @@ html[data-gate]{overflow:hidden}
 .gate .g-p{font-size:12px;line-height:1.55;color:var(--dim);margin:0 0 10px}
 .gate .g-go{font:400 9.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
  border-bottom:1px solid var(--ink);padding-bottom:2px}
+.gate .g-arms{position:absolute;left:50%;transform:translateX(-50%);bottom:22px;
+ display:flex;gap:6px;z-index:2}
+.gate .g-arm{font:400 9px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+ color:var(--dim);background:var(--bg);border:1px solid var(--rule);padding:5px 8px;
+ cursor:pointer}
+.gate .g-arm[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.gate .g-arm:hover{border-color:var(--ink);color:var(--ink)}
+.gate .g-arm[aria-pressed=true]:hover{color:var(--bg)}
+@media(max-width:700px){.gate .g-arms{bottom:auto;top:48px}}
 .gate .g-tip{position:absolute;z-index:5;pointer-events:none;background:var(--ink);
  color:var(--bg);font:400 10px/1.5 var(--mono);letter-spacing:.04em;padding:6px 9px;
  max-width:250px;transform:translate(-50%,calc(-100% - 10px));display:none}
