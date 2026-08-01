@@ -51,7 +51,7 @@ co-created <a class="xl" href="https://urbanistai.com">UrbanistAI</a>.</p></div>
         <button class="g-krow" data-sec="pri"><i class="k-pri"></i><span class="kn">Private sector</span>
           <span class="kt">academic knowledge into practice</span><span>32</span></button>
       </div>
-      <span class="g-cap">Every client since 2012 · 93 organisations · hover to read · click to pin</span>
+      <span class="g-cap">Every client since 2012 · 93 organisations · closer to the centre = more engagements · hover to read, click to pin</span>
     </div>
   </div>
   <div class="g-legend"><b>Sources</b>
@@ -90,7 +90,12 @@ var pts=[],iso=null,arm=null,pinned=null;
 var HOME={pub:Math.PI,aca:-Math.PI/3,pri:Math.PI/3};
 function tok(n){return getComputedStyle(document.documentElement)
   .getPropertyValue(n).trim();}
-function secCol(sec){return tok({pub:"--mv",aca:"--sp",pri:"--sc"}[sec]);}
+function mix(hexA,hexB,t){        // soften: sector colour blended toward the ground
+  function rgb(h){h=h.replace("#","");if(h.length===3)h=h.replace(/./g,function(c){return c+c});
+    return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+  var a=rgb(hexA),b=rgb(hexB);
+  return "rgb("+a.map(function(v,i){return Math.round(v*t+b[i]*(1-t))}).join(",")+")";}
+function secCol(sec){return mix(tok({pub:"--mv",aca:"--sp",pri:"--sc"}[sec]),tok("--bg"),0.52);}
 // area encodes engagements: r ~ sqrt(count)
 function dotR(c){return 4+2.4*Math.sqrt(Math.max(0,c.c-1));}
 
@@ -100,12 +105,16 @@ function layout(){
   W=r.width;H=r.height;canvas.width=W*DPR;canvas.height=H*DPR;
   ctx.setTransform(DPR,0,0,DPR,0,0);
   var cx=W/2,cy=H*0.5,R=Math.min(W,H)*0.46;
-  // deterministic seeds in each sector's third of the circle
+  // RADIUS ENCODES DEPTH: the more engagements (and both-sides work), the
+  // closer an organisation sits to the mark; single engagements ring the rim.
+  var cmax=1;GATE_ORGS.forEach(function(c){if(c.c>cmax)cmax=c.c});
   pts=GATE_ORGS.map(function(c){
     var h=0;for(var k=0;k<c.n.length;k++){h=(h*31+c.n.charCodeAt(k))>>>0;}
     var ang=HOME[c.sec]+((h%1000)/1000-0.5)*(Math.PI*0.52);
-    var rad=R*(0.36+((h>>10)%1000)/1000*0.55);
-    return {c:c,x:cx+Math.cos(ang)*rad,y:cy+Math.sin(ang)*rad,r:dotR(c)};
+    var depth=Math.sqrt(Math.max(0,c.c-1))/Math.sqrt(Math.max(1,cmax-1));
+    if(c.src.indexOf("S")>=0&&c.src.length>1)depth=Math.min(1,depth+0.25);
+    var tR=R*(0.30+(1-depth)*0.62);
+    return {c:c,tR:tR,x:cx+Math.cos(ang)*tR,y:cy+Math.sin(ang)*tR,r:dotR(c)};
   });
   // Static relaxation, run once: separate overlapping dots, hold each inside
   // its sector's third, keep the centre clear for the mark and everything
@@ -121,9 +130,12 @@ function layout(){
           p.x-=ux*push;p.y-=uy*push;q.x+=ux*push;q.y+=uy*push;}
       }
       var vx=p.x-cx,vy=p.y-cy,d2=Math.sqrt(vx*vx+vy*vy)||0.001;
+      // gentle spring toward the radius its engagement count has earned
+      var want=d2+(p.tR-d2)*0.12;
+      p.x=cx+vx/d2*want;p.y=cy+vy/d2*want;d2=want;
       var lo=inner+p.r,hi=outer-p.r;
-      if(d2<lo){p.x=cx+vx/d2*lo;p.y=cy+vy/d2*lo;d2=lo;}
-      if(d2>hi){p.x=cx+vx/d2*hi;p.y=cy+vy/d2*hi;d2=hi;}
+      if(d2<lo){p.x=cx+(p.x-cx)/d2*lo;p.y=cy+(p.y-cy)/d2*lo;d2=lo;}
+      if(d2>hi){p.x=cx+(p.x-cx)/d2*hi;p.y=cy+(p.y-cy)/d2*hi;d2=hi;}
       var a=Math.atan2(p.y-cy,p.x-cx),home=HOME[p.c.sec];
       var diff=Math.atan2(Math.sin(a-home),Math.cos(a-home));
       if(Math.abs(diff)>LIM){
@@ -161,25 +173,6 @@ function draw(){
     ctx.lineWidth=1;
   });
   ctx.globalAlpha=1;
-  // the three deepest relationships get names, led OUT of the field on a
-  // leader line so no label ever sits on a dot
-  var tops=pts.slice().sort(function(a,b){return b.c.c-a.c.c}).slice(0,3);
-  ctx.font="9px ui-monospace,Menlo,monospace";ctx.textBaseline="middle";
-  tops.forEach(function(p){
-    if(!visible(p))return;
-    var a=Math.atan2(p.y-cy,p.x-cx);
-    var x1=p.x+Math.cos(a)*(p.r+2),y1=p.y+Math.sin(a)*(p.r+2);
-    var x2=cx+Math.cos(a)*(R+7),y2=cy+Math.sin(a)*(R+7);
-    ctx.strokeStyle=DIM;ctx.globalAlpha=0.5;
-    ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
-    ctx.globalAlpha=1;ctx.fillStyle=INK;
-    var label=p.c.n.toUpperCase(),tw=ctx.measureText(label).width;
-    var tx,align;
-    if(Math.cos(a)>=0){tx=Math.min(x2+4,W-4-tw);align="left";}
-    else{tx=Math.max(x2-4,4+tw);align="right";}
-    ctx.textAlign=align;
-    ctx.fillText(label,tx,Math.max(8,Math.min(H-8,y2)));
-  });
   if(pinned&&visible(pinned))showTip(pinned,true);
   else if(pinned){pinned=null;tip.style.display="none";}
 }
