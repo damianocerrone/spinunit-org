@@ -1,11 +1,13 @@
 # product-only repo: pages + assets. Everything that is source, cache or
 # private data stays local.
+# Leading slashes matter: an unanchored "data/" matches a directory of that
+# name at ANY depth, which silently swallowed the /work/data/ redirect stub.
 HANDOFF.md
 build.py
 build-report.txt
-data/
-_pdfcache/
-_old-scrape/
+/data/
+/_pdfcache/
+/_old-scrape/
 .DS_Store
 nohup.out
 __pycache__/
