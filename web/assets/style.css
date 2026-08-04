@@ -20,6 +20,11 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 :focus-visible{outline:2px solid var(--mv);outline-offset:2px}
 .ap{font-family:var(--mono)}
+/* Projects and Reports are designed to open straight into the corpus — no
+   masthead. They still need a real <h1>: without one the page has no name for
+   a screen reader or a search result, and the heading outline starts at h2. */
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+ clip-path:inset(50%);white-space:nowrap;border:0}
 .nav{display:flex;align-items:center;gap:18px;padding:14px 22px;border-bottom:1.5px solid var(--ink);
  flex-wrap:wrap}
 .wm{font-family:var(--narrow);font-weight:700;font-size:20px;letter-spacing:.05em;
@@ -325,7 +330,7 @@ html[data-gate]{overflow:hidden}
 .gate .g-top{display:flex;justify-content:space-between;align-items:center;
  padding:14px 22px;border-bottom:1.5px solid var(--ink);background:var(--bg)}
 .gate .g-wm{font-family:var(--narrow);font-weight:700;font-size:20px;
- letter-spacing:.05em;text-transform:uppercase}
+ letter-spacing:.05em;text-transform:uppercase;margin:0}
 .gate .g-skip{font:400 9.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
  color:var(--dim);border-bottom:1px solid var(--rule);cursor:pointer}
 .gate .g-skip:hover{color:var(--ink);border-color:var(--ink)}

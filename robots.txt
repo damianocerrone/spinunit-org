@@ -1,0 +1,5 @@
+# spinunit.org — the repository is open; everything here is meant to be read.
+User-agent: *
+Allow: /
+
+Sitemap: https://spinunit.org/sitemap.xml
