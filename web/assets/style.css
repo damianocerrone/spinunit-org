@@ -3,6 +3,7 @@
  --hair:rgba(42,40,89,.09);--doc:#f9c66b;--docink:#2a2859;--mv:#ff8274;--sp:#6fe9ff;--sc:#43f8b6;
  --mono:ui-monospace,'SF Mono',Menlo,monospace;
  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+ --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif;
  --narrow:'Arial Narrow',Arial,sans-serif}
 @media (prefers-color-scheme:dark){:root{--bg:#0e1620;--panel:#16202c;--ink:#dce4ea;--dim:#7c8b98;
  --rule:rgba(220,228,234,.16);--hair:rgba(220,228,234,.08);--doc:#f2bb4d;--docink:#0e1620;
@@ -173,10 +174,12 @@ footer a{color:inherit}
 .ph{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
  padding:24px 22px 4px}
 .ph .ap{color:var(--dim);font-weight:400;font-size:9px;margin-left:8px}
-.names{display:flex;flex-wrap:wrap;gap:6px;padding:8px 22px 4px}
-.nm{font-size:11.5px;padding:6px 10px;border:1px solid var(--rule)}
-.nm i{font-style:normal;color:var(--dim);font-size:9px;margin-left:6px}
-.nm.core{border-color:var(--ink)}
+.names{display:flex;flex-wrap:wrap;gap:9px 24px;padding:10px 22px 6px;max-width:880px}
+.nm{font:400 18px/1.25 var(--serif);color:var(--ink);display:inline-flex;align-items:baseline;gap:7px}
+.nm i{font-style:italic;color:var(--dim);font-size:10.5px;font-family:var(--sans);letter-spacing:.01em}
+.netlead{padding:6px 22px 2px;max-width:720px;color:var(--dim);font-size:13.5px;line-height:1.65}
+.sh{font:400 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+ padding:18px 22px 0}
 .prose{padding:34px 22px 8px;max-width:860px}
 .prose h1{font-size:clamp(22px,2.8vw,30px);line-height:1.25;letter-spacing:-.018em;margin:0 0 16px;
  font-weight:600;max-width:30ch}
@@ -312,7 +315,7 @@ footer a{color:inherit}
 .office{background:var(--bg);padding:14px 16px 16px}
 .oh{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
  padding-bottom:9px;border-bottom:1px solid var(--rule);margin-bottom:10px}
-.op{font-size:14px;font-weight:500;padding:4px 0;display:flex;justify-content:space-between;
+.op{font:400 18px/1.2 var(--serif);padding:4px 0;display:flex;justify-content:space-between;
  align-items:baseline;gap:12px}
 .op i{font-style:normal;font-size:9px;letter-spacing:.13em;text-transform:uppercase;
  color:var(--dim);font-weight:400}
