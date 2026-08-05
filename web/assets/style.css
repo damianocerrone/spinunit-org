@@ -33,20 +33,24 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
  button, no localStorage override to fight with it. */
 .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;
  padding:14px 22px;border-bottom:1.5px solid var(--ink)}
+/* The wordmark is the logo now: SPIN UNIT set in the header's own type,
+ trailed by the dash+6-dot mark — text then mark, the same order the
+ original logo file uses. */
 .wm{font-family:var(--narrow);font-weight:700;font-size:20px;letter-spacing:.05em;
- text-transform:uppercase;justify-self:start}
+ text-transform:uppercase;justify-self:start;display:inline-flex;align-items:center;gap:9px}
+.wm .wmi{width:15px;height:20px;flex:0 0 auto}
 .nav .lk{justify-self:center;display:flex;gap:2px;flex-wrap:wrap}
 .nav .lk a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
  padding:7px 10px}
 .nav .lk a.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
-/* About lives in the third slot (where the mode button used to be), reading
- as a real button rather than a fifth plain link. Its .on state can't reuse
- the underline treatment above: on an ink FILL, ink text/underline would be
- invisible, so being "here" inverts the button instead. */
-.nav .about{justify-self:end;background:var(--ink);color:var(--bg);font-weight:700;
- font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px}
-.nav .about:hover{background:var(--dim)}
-.nav .about.on{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+/* About is set in the SAME type as the wordmark — not a button, a second
+ piece of logo-weight text balancing the left side. Its "on" state reuses
+ the plain nav-link underline rather than the old invert-a-button treatment,
+ since it is now plain text like everything else here. */
+.nav .about{justify-self:end;font-family:var(--narrow);font-weight:700;font-size:20px;
+ letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.nav .about:hover{color:var(--dim)}
+.nav .about.on{box-shadow:inset 0 -3px 0 var(--ink);padding-bottom:3px}
 @media(max-width:760px){
  .nav{display:flex;flex-wrap:wrap;row-gap:10px}
  .wm{margin-right:auto}
