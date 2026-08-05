@@ -177,7 +177,12 @@ footer a{color:inherit}
 .names{display:flex;flex-wrap:wrap;gap:9px 24px;padding:10px 22px 6px;max-width:880px}
 .nm{font:400 18px/1.25 var(--serif);color:var(--ink);display:inline-flex;align-items:baseline;gap:7px}
 .nm i{font-style:italic;color:var(--dim);font-size:10.5px;font-family:var(--sans);letter-spacing:.01em}
-.netlead{padding:6px 22px 2px;max-width:720px;color:var(--dim);font-size:13.5px;line-height:1.65}
+/* Same 720px measure as `.prose.mid`, so it sits in the SAME centred column as
+   the About prose above it rather than stepping back to the left edge. The
+   structured lists below (offices, names) stay full-width on purpose: prose is
+   centred, data is not. */
+.netlead{padding:6px 22px 2px;max-width:720px;margin:0 auto;color:var(--dim);
+ font-size:13.5px;line-height:1.65}
 .sh{font:400 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
  padding:18px 22px 0}
 .prose{padding:34px 22px 8px;max-width:860px}
@@ -185,6 +190,21 @@ footer a{color:inherit}
  font-weight:600;max-width:30ch}
 .prose p{font-size:16.5px;line-height:1.68;color:var(--dim);max-width:68ch;margin:0 0 15px}
 .prose p b{color:var(--ink);font-weight:500}
+/* `.mid` — a CENTRED measure, for the About page (Damiano, 2026-08-04: the text
+   "is in an awkward position, two thirds on the left and too narrow"). He was
+   right and the cause was double-constraint: a 760px inline cap inside the
+   1180px `main`, with every paragraph capped again at 68ch — so the column hugged
+   the left and left ~420px dead, misaligned against the full-width sections under
+   it. Centring makes the whitespace symmetric and keeps ONE honest reading
+   measure. The paragraph cap is lifted here because the container is now the
+   measure; leaving both would narrow it a second time. */
+.prose.mid{max-width:720px;margin:0 auto}
+.prose.mid h1{max-width:none;text-align:center;margin-bottom:22px}
+.prose.mid p{max-width:none}
+.prose.mid .rule{width:46px;height:2px;background:var(--doc);margin:0 auto 30px}
+.prose.mid .lede{font-family:var(--serif);font-size:21px;line-height:1.5;
+ color:var(--ink);margin-bottom:24px}
+@media(max-width:640px){.prose.mid .lede{font-size:19px}}
 .rb{padding:26px 22px 8px}
 .rn{font:400 9.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
 .rt{font-size:clamp(20px,2.6vw,27px);line-height:1.2;margin:10px 0 0;font-weight:600;
