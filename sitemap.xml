@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://spinunit.org/web/</loc><lastmod>2026-08-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spinunit.org/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spinunit.org/web/projects.html</loc><lastmod>2026-08-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spinunit.org/web/reports.html</loc><lastmod>2026-08-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spinunit.org/web/</loc><lastmod>2026-08-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spinunit.org/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spinunit.org/web/projects.html</loc><lastmod>2026-08-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spinunit.org/web/reports.html</loc><lastmod>2026-08-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Parnu-parking-study-analysis-1.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Parnu-parking-study-recommendations-1.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Parnu-parking-study---presentation.pdf</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Parnu-parking-study---short-summary.pdf</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Winter-Condition-Cards-international-benchmarking-1.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Winter-Maintenance-for-Walking-and-Cycling-final-report-1.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spinunit.org/web/assets/rep/Bolt-Drive-mode-shift-survey-detailed-results-1.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spinunit.org/web/assets/rep/Bolt-Drive-mode-shift-survey-summary-1.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Tartu-parking-policy-baseline-analysis-final-report-15.01.2024-3.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Tartu-parking-study-client-presentation-09.01.2024-3.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://spinunit.org/web/assets/rep/Tallinn-accessibility-analysis-final-presentation-1.pdf</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
@@ -71,13 +69,13 @@
   <url><loc>https://spinunit.org/web/r/2026-taltech-ehr-data-processing.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2026-parnu-panu-parking-policy.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2025-hol.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spinunit.org/web/r/2025-bolt.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spinunit.org/web/r/2025-bolt.html</loc><lastmod>2026-08-24</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2024-tartu-parking-study.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2024-tallinn-service-accessibility-analysis.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2024-lse-lebanon-unsettled.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2023-undp-kosovo.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2023-telt-storymap.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spinunit.org/web/r/2023-tallinn-metapark-data-redelivery.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spinunit.org/web/r/2023-tallinn-metapark-data-redelivery.html</loc><lastmod>2026-08-24</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2022-vkg-stockmann-mobility-analysis.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2022-tallinn-green-factor.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2022-ministry-of-economy-shrinking-ministry-national-study.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
@@ -86,7 +84,7 @@
   <url><loc>https://spinunit.org/web/r/2022-forum-virium-yla-malmi-analysis.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2022-estonian-architecture-center-tab-food-expo.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2021-unfinished-city-expo.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spinunit.org/web/r/2021-tuusula-harismaki.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spinunit.org/web/r/2021-tuusula-harismaki.html</loc><lastmod>2026-08-24</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2021-hol-demos-the-new-modal.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2021-hol-bus-stop-survey.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spinunit.org/web/r/2021-fyma-london-traffic-analysis.html</loc><lastmod>2026-08-05</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
