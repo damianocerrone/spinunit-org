@@ -456,23 +456,23 @@ html[data-gate]{overflow:hidden}
 .gate .d-rep .g-go,.gate .d-pla .g-go{color:#fff;border-bottom-color:rgba(255,255,255,.72)}
 /* THE OFFICE / THE PLATFORM: the label is what the visitor is choosing between,
  so it leads the door and is built to carry — bigger, brighter, on its own rule. */
-.gate .d-rep .g-eb,.gate .d-pla .g-eb{font-size:11.5px;font-weight:500;letter-spacing:.2em;
+.gate .d-rep .g-eb,.gate .d-pla .g-eb{font-size:.875rem;font-weight:500;letter-spacing:.2em;
  color:#fff;display:inline-flex;align-items:center;gap:9px}
 .gate .d-rep .g-eb::before,.gate .d-pla .g-eb::before{content:"";width:22px;height:2px;
  background:currentColor;display:block;flex:none}
 /* The marks, deliberately small: they identify the door, they are not the
  headline. White-only files, because the door is dark in both themes. */
 .g-mk{display:block;margin:18px 0 4px}
-.g-mk.spin{width:92px;height:auto}
-.g-mk.cp{width:104px;height:auto}
-@media(max-width:900px){.g-mk.spin{width:78px}.g-mk.cp{width:88px}}
+.g-mk.spin{width:6.75rem;height:auto}
+.g-mk.cp{width:7.5rem;height:auto}
+@media(max-width:900px){.g-mk.spin{width:5.5rem}.g-mk.cp{width:6.25rem}}
 .gate .g-eb{font:400 9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
  color:var(--dim)}
-.gate .g-h{display:block;font-size:clamp(19px,2vw,26px);line-height:1.25;font-weight:600;
- letter-spacing:-.02em;margin:14px 0 12px;max-width:22ch}
-.gate .g-p{display:block;font-size:13px;line-height:1.6;color:var(--dim);margin:0;
- max-width:36ch}
-.gate .g-go{margin-top:auto;align-self:flex-start;font:400 10px/1 var(--mono);
+.gate .g-h{display:block;font-size:clamp(1.75rem,3vw,2.6rem);line-height:1.18;font-weight:600;
+ letter-spacing:-.024em;margin:.9rem 0 .9rem;max-width:19ch}
+.gate .g-p{display:block;font-size:1.125rem;line-height:1.5;color:var(--dim);margin:0;
+ max-width:33ch}
+.gate .g-go{margin-top:auto;align-self:flex-start;font:400 .8125rem/1 var(--mono);
  letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--ink);
  padding-bottom:2px}
 .gate .g-fig{position:relative;flex:1;min-height:240px;margin-top:4px}
