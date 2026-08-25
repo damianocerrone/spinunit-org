@@ -428,22 +428,44 @@ html[data-gate]{overflow:hidden}
  border-left:0;transition:background .2s,color .2s}
 /* the doors answer in the theme's own colours: the office in cyan, the
  platforms in green — dark ink text on both grounds, light and dark */
-/* hover reveals a project image behind a theme-coloured scrim, instead of a
- flat highlight — the office shows a zoom of the Tallinn green-factor map, the
- platforms show a CoPlanAI participation workshop. Text stays in theme ink,
- kept legible by the scrim; the image drifts in with a slow zoom. */
-.gate a.d-rep,.gate a.d-pla{position:relative;overflow:hidden;isolation:isolate}
+/* Each door IS its photograph — the office a zoom of the Tallinn green-factor
+ map, the platform a CoPlanAI participation workshop. Chosen by Damiano from
+ three options, 2026-08-25.
+
+ These two images were already here and already paired to these doors; they
+ were just hidden behind :hover, so on arrival — and on every touch device,
+ forever — the two doors were the same column of text twice. Now they are the
+ doors. The scrim is a gradient, heaviest at the foot where the type sits, and
+ it is a fixed dark in BOTH themes: the doors are photographs, so they do not
+ flip with the theme the way paper does. Hover only deepens and drifts. */
+.gate a.d-rep,.gate a.d-pla{position:relative;overflow:hidden;isolation:isolate;color:#fff}
 .gate a.d-rep::before,.gate a.d-pla::before{content:"";position:absolute;inset:0;z-index:-2;
- background-size:cover;background-position:center;opacity:0;transform:scale(1.06);
- transition:opacity .45s ease,transform 7s ease}
+ background-size:cover;background-position:center;transform:scale(1.02);
+ transition:transform 7s ease}
 .gate a.d-rep::before{background-image:url(gate-office.jpg)}
 .gate a.d-pla::before{background-image:url(gate-platforms.jpg)}
 .gate a.d-rep::after,.gate a.d-pla::after{content:"";position:absolute;inset:0;z-index:-1;
- background:var(--bg);opacity:0;transition:opacity .45s ease}
+ transition:opacity .45s ease;opacity:1}
+.gate a.d-rep::after{background:linear-gradient(180deg,rgba(20,19,46,.74),rgba(20,19,46,.93))}
+.gate a.d-pla::after{background:linear-gradient(180deg,rgba(9,22,58,.56),rgba(11,27,63,.92))}
 .gate a.d-rep:hover::before,.gate a.d-rep:focus-visible::before,
-.gate a.d-pla:hover::before,.gate a.d-pla:focus-visible::before{opacity:1;transform:scale(1.16)}
-.gate a.d-rep:hover::after,.gate a.d-rep:focus-visible::after,
-.gate a.d-pla:hover::after,.gate a.d-pla:focus-visible::after{opacity:.5}
+.gate a.d-pla:hover::before,.gate a.d-pla:focus-visible::before{transform:scale(1.1)}
+/* Reversed type, scoped to the two doors ONLY — the clients column stays paper,
+ and an unscoped rule here paints its eyebrow white on white. */
+.gate .d-rep .g-p,.gate .d-pla .g-p{color:rgba(255,255,255,.82)}
+.gate .d-rep .g-go,.gate .d-pla .g-go{color:#fff;border-bottom-color:rgba(255,255,255,.72)}
+/* THE OFFICE / THE PLATFORM: the label is what the visitor is choosing between,
+ so it leads the door and is built to carry — bigger, brighter, on its own rule. */
+.gate .d-rep .g-eb,.gate .d-pla .g-eb{font-size:11.5px;font-weight:500;letter-spacing:.2em;
+ color:#fff;display:inline-flex;align-items:center;gap:9px}
+.gate .d-rep .g-eb::before,.gate .d-pla .g-eb::before{content:"";width:22px;height:2px;
+ background:currentColor;display:block;flex:none}
+/* The marks, deliberately small: they identify the door, they are not the
+ headline. White-only files, because the door is dark in both themes. */
+.g-mk{display:block;margin:18px 0 4px}
+.g-mk.spin{width:92px;height:auto}
+.g-mk.cp{width:104px;height:auto}
+@media(max-width:900px){.g-mk.spin{width:78px}.g-mk.cp{width:88px}}
 .gate .g-eb{font:400 9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
  color:var(--dim)}
 .gate .g-h{display:block;font-size:clamp(19px,2vw,26px);line-height:1.25;font-weight:600;
