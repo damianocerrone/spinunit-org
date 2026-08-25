@@ -119,6 +119,22 @@ main.abt{max-width:720px}
 .row.cur{cursor:default}
 .row.cur:hover{background:none}
 .row.cur .l i{border-radius:50%}
+
+/* ---- Recent projects: the lens as a bubble in the year slot ---------------
+ Same halo+core grammar as the gate's constellation, at row scale, blended the
+ same way. The year moves under the title rather than being dropped: the row
+ loses nothing, it just leads with colour instead of with four digits. */
+.row.rb{align-items:center}
+.rbub{display:block;overflow:visible}
+.rbub .rh,.rbub .rc{mix-blend-mode:multiply}
+@media (prefers-color-scheme:dark){.rbub .rh,.rbub .rc{mix-blend-mode:screen}}
+:root[data-mode=dark] .rbub .rh,:root[data-mode=dark] .rbub .rc{mix-blend-mode:screen}
+:root[data-mode=light] .rbub .rh,:root[data-mode=light] .rbub .rc{mix-blend-mode:multiply}
+.rbub .rh{fill:var(--k);opacity:.28}
+.rbub .rc{fill:var(--k);opacity:.6}
+.row.rb .t{display:block}
+.row.rb .ry{display:block;font:400 9.5px/1.5 var(--mono);color:var(--dim);
+ font-variant-numeric:tabular-nums;margin-top:1px}
 .bar{display:flex;gap:8px;align-items:center;padding:12px 22px;flex-wrap:wrap;
  background:var(--panel);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:30}
 .q{flex:1 1 200px;min-width:150px;background:var(--bg);border:1px solid var(--rule);
