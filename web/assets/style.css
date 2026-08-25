@@ -439,17 +439,30 @@ html[data-gate]{overflow:hidden}
  it is a fixed dark in BOTH themes: the doors are photographs, so they do not
  flip with the theme the way paper does. Hover only deepens and drifts. */
 .gate a.d-rep,.gate a.d-pla{position:relative;overflow:hidden;isolation:isolate;color:#fff}
-.gate a.d-rep::before,.gate a.d-pla::before{content:"";position:absolute;inset:0;z-index:-2;
- background-size:cover;background-position:center;transform:scale(1.02);
- transition:transform 7s ease}
-.gate a.d-rep::before{background-image:url(gate-office.jpg)}
-.gate a.d-pla::before{background-image:url(gate-platforms.jpg)}
 .gate a.d-rep::after,.gate a.d-pla::after{content:"";position:absolute;inset:0;z-index:-1;
- transition:opacity .45s ease;opacity:1}
+ opacity:1}
 .gate a.d-rep::after{background:linear-gradient(180deg,rgba(20,19,46,.74),rgba(20,19,46,.93))}
 .gate a.d-pla::after{background:linear-gradient(180deg,rgba(9,22,58,.56),rgba(11,27,63,.92))}
-.gate a.d-rep:hover::before,.gate a.d-rep:focus-visible::before,
-.gate a.d-pla:hover::before,.gate a.d-pla:focus-visible::before{transform:scale(1.1)}
+
+/* Each door cycles ten stills behind its scrim — the office ten project maps,
+ the platform a mix of UrbanistAI scenario work and real workshop photographs.
+ Damiano's brief, 2026-08-25: slow and subtle, and the two must never look
+ synchronised. So they run on deliberately non-harmonic holds (9s / 11.9s) with
+ the platform offset by 4s: the pair drift in and out of step and never pulse
+ together. This is the ONE thing on the gate that moves without the visitor —
+ a deliberate exception to the start screen's "nothing moves" rule, kept slow
+ enough to read as drift rather than as a slideshow.
+ The element itself carries frame 00 as a background, so with JS off the door
+ is still a photograph rather than a flat scrim. */
+.g-ph{position:absolute;inset:0;z-index:-2;overflow:hidden;
+ background-size:cover;background-position:center}
+.g-ph i{position:absolute;inset:0;background-size:cover;background-position:center;
+ opacity:0;transform:scale(1.015);
+ transition:opacity 3s ease-in-out,transform 15s linear}
+.g-ph i.on{opacity:1;transform:scale(1.07)}
+@media (prefers-reduced-motion:reduce){
+ .g-ph i{transition:opacity .01s linear;transform:none}
+ .g-ph i.on{transform:none}}
 /* Reversed type, scoped to the two doors ONLY — the clients column stays paper,
  and an unscoped rule here paints its eyebrow white on white. */
 .gate .d-rep .g-p,.gate .d-pla .g-p{color:rgba(255,255,255,.82)}
@@ -463,9 +476,9 @@ html[data-gate]{overflow:hidden}
 /* The marks, deliberately small: they identify the door, they are not the
  headline. White-only files, because the door is dark in both themes. */
 .g-mk{display:block;margin:18px 0 4px}
-.g-mk.spin{width:6.75rem;height:auto}
+.g-mk.spin{width:8.5rem;height:auto}
 .g-mk.cp{width:7.5rem;height:auto}
-@media(max-width:900px){.g-mk.spin{width:5.5rem}.g-mk.cp{width:6.25rem}}
+@media(max-width:900px){.g-mk.spin{width:7rem}.g-mk.cp{width:6.25rem}}
 .gate .g-eb{font:400 9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
  color:var(--dim)}
 .gate .g-h{display:block;font-size:clamp(1.75rem,3vw,2.6rem);line-height:1.18;font-weight:600;

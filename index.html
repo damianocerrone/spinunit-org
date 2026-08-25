@@ -30,9 +30,12 @@
     <a class="g-skip ap" href="web/about.html" target="_blank" rel="noopener">About →</a></div>
   <div class="g-cols">
     <a class="g-col d-rep" href="web/" target="_blank" rel="noopener">
+      <span class="g-ph" aria-hidden="true" data-dir="web/assets/doors/office"
+            data-n="10" data-hold="9000" data-delay="0"
+            style="background-image:url(web/assets/doors/office/00.jpg)"></span>
       <span class="g-eb">The office</span>
-      <img class="g-mk spin" src="web/assets/spin-lockup-white.svg" alt="SPIN Unit"
-           width="92" height="48" loading="eager">
+      <img class="g-mk spin" src="web/assets/spin-lockup.svg" alt="SPIN Unit"
+           width="136" height="56" loading="eager">
       <span class="g-h">We do research for <span class="u1">cities</span>,
       <span class="u2">ministries</span> and <span class="u3">development projects</span>.</span>
       <span class="g-p">Quantitative and spatial: survey, movement and accessibility data,
@@ -42,6 +45,9 @@
       <span class="g-go ap">Enter the repository →</span>
     </a>
     <a class="g-col d-pla" href="https://coplanai.com" target="_blank" rel="noopener">
+      <span class="g-ph" aria-hidden="true" data-dir="web/assets/doors/platform"
+            data-n="10" data-hold="11900" data-delay="4000"
+            style="background-image:url(web/assets/doors/platform/00.jpg)"></span>
       <span class="g-eb">The platform</span>
       <img class="g-mk cp" src="web/assets/coplanai-logo-white.svg" alt="CoPlanAI"
            width="104" height="27" loading="eager">
@@ -243,6 +249,58 @@ var rq=null;
 addEventListener("resize",function(){
   if(rq)cancelAnimationFrame(rq);
   rq=requestAnimationFrame(function(){rq=null;layout();});
+});
+})();
+
+// ---- door photo cycles -----------------------------------------------------
+// Ten stills per door, cross-faded slowly. Two rules this obeys:
+//   1. Nothing is fetched unless the gate is actually on screen. A returning
+//      visitor skips the gate entirely, and downloading 20 stills for a screen
+//      they will never see is 3 MB of someone else's data.
+//   2. A frame only starts fading in once it has decoded. Fading to a
+//      half-loaded image is what makes a slideshow look cheap.
+(function(){
+"use strict";
+if(!document.documentElement.hasAttribute("data-gate"))return;
+if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+Array.prototype.forEach.call(document.querySelectorAll(".g-ph"),function(ph){
+  var dir=ph.getAttribute("data-dir")||"",n=+ph.getAttribute("data-n")||0;
+  var hold=+ph.getAttribute("data-hold")||9000,delay=+ph.getAttribute("data-delay")||0;
+  if(n<2||!dir)return;
+  var layers=[],cur=-1,busy=false;
+  function src(k){return dir+"/"+(k<10?"0":"")+k+".jpg";}
+  function layer(k){
+    if(layers[k])return layers[k];
+    var el=document.createElement("i");
+    el.style.backgroundImage="url("+src(k)+")";
+    ph.appendChild(el);layers[k]=el;return el;
+  }
+  function show(k){
+    if(busy||k===cur)return;
+    busy=true;
+    var img=new Image();
+    img.onload=img.onerror=function(){
+      var el=layer(k);
+      // Force style resolution between insertion and the class change, or the
+      // browser collapses the two styles and the transition never runs.
+      // Deliberately a reflow read and NOT requestAnimationFrame: rAF does not
+      // fire in a hidden document, so an rAF version leaves the first frame
+      // stuck un-faded — and with `busy` latched — for anyone who opens the
+      // page in a background tab. Verified against a real browser.
+      void el.offsetHeight;
+      el.className="on";
+      if(cur>=0&&layers[cur]&&cur!==k)layers[cur].className="";
+      cur=k;busy=false;
+    };
+    img.src=src(k);
+  }
+  show(0);
+  setTimeout(function(){
+    setInterval(function(){
+      if(document.hidden)return;          // don't burn frames in a background tab
+      show((cur+1)%n);
+    },hold);
+  },delay+hold);
 });
 })();
 </script>
