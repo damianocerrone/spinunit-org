@@ -447,8 +447,8 @@ html[data-gate]{overflow:hidden}
 /* Each door cycles ten stills behind its scrim — the office ten project maps,
  the platform a mix of UrbanistAI scenario work and real workshop photographs.
  Damiano's brief, 2026-08-25: slow and subtle, and the two must never look
- synchronised. So they run on deliberately non-harmonic holds (9s / 11.9s) with
- the platform offset by 4s: the pair drift in and out of step and never pulse
+ synchronised. So they run on deliberately non-harmonic holds (5s / 6.9s) with
+ the platform offset by 2s: the pair drift in and out of step and never pulse
  together. This is the ONE thing on the gate that moves without the visitor —
  a deliberate exception to the start screen's "nothing moves" rule, kept slow
  enough to read as drift rather than as a slideshow.
@@ -458,7 +458,7 @@ html[data-gate]{overflow:hidden}
  background-size:cover;background-position:center}
 .g-ph i{position:absolute;inset:0;background-size:cover;background-position:center;
  opacity:0;transform:scale(1.015);
- transition:opacity 3s ease-in-out,transform 15s linear}
+ transition:opacity 1.6s ease-in-out,transform 9s linear}
 .g-ph i.on{opacity:1;transform:scale(1.07)}
 @media (prefers-reduced-motion:reduce){
  .g-ph i{transition:opacity .01s linear;transform:none}
