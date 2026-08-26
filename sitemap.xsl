@@ -16,11 +16,8 @@
   color:#6a6a86;border-bottom:1.5px solid #2a2859;padding:0 10px 7px 0;font-weight:400}
  td{padding:7px 10px 7px 0;border-bottom:1px solid rgba(42,40,89,.09);
   font-size:12.5px;vertical-align:top}
- td.m{color:#6a6a86;white-space:nowrap}
- a{color:#2a2859} a:hover{background:#f9c66b}
- @media(prefers-color-scheme:dark){body{background:#0e1620;color:#dce4ea}
-  h1{color:#dce4ea} th{color:#7c8b98;border-color:#dce4ea} td.m,p.n{color:#7c8b98}
-  td{border-color:rgba(220,228,234,.12)} a{color:#dce4ea}}
+ td.m{color:#7c8b98;white-space:nowrap}
+ a{color:#dce4ea} a:hover{background:#f2bb4d;color:#0e1620}
 </style></head><body>
 <h1>SPIN Unit — sitemap</h1>
 <p class="n"><xsl:value-of select="count(s:urlset/s:url)"/> URLs. This is the

@@ -1,19 +1,17 @@
 
-:root{--bg:#f9f9f8;--panel:#f1f1f4;--ink:#2a2859;--dim:#6a6a86;--rule:rgba(42,40,89,.18);
- --hair:rgba(42,40,89,.09);--doc:#f9c66b;--docink:#2a2859;--mv:#ff8274;--sp:#6fe9ff;--sc:#43f8b6;
- --mono:ui-monospace,'SF Mono',Menlo,monospace;
+:root{--mono:ui-monospace,'SF Mono',Menlo,monospace;
  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
  --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif;
- --narrow:'Arial Narrow',Arial,sans-serif}
-@media (prefers-color-scheme:dark){:root{--bg:#0e1620;--panel:#16202c;--ink:#dce4ea;--dim:#7c8b98;
- --rule:rgba(220,228,234,.16);--hair:rgba(220,228,234,.08);--doc:#f2bb4d;--docink:#0e1620;
- --mv:#f0a44e;--sp:#5b9bd5;--sc:#79c2a8}}
-:root[data-mode=dark]{--bg:#0e1620;--panel:#16202c;--ink:#dce4ea;--dim:#7c8b98;
+ --narrow:'Arial Narrow',Arial,sans-serif;
+ /* DARK ONLY, Damiano 2026-08-26. The light palette and both data-mode
+    overrides are gone: the dark values ARE the palette now, declared once, so
+    there is no second set of colours for a rule to fall out of step with.
+    color-scheme tells the browser to render form controls, scrollbars and the
+    canvas dark too — without it the flash before first paint is white. */
+ color-scheme:dark;
+ --bg:#0e1620;--panel:#16202c;--ink:#dce4ea;--dim:#7c8b98;
  --rule:rgba(220,228,234,.16);--hair:rgba(220,228,234,.08);--doc:#f2bb4d;--docink:#0e1620;
  --mv:#f0a44e;--sp:#5b9bd5;--sc:#79c2a8}
-:root[data-mode=light]{--bg:#f9f9f8;--panel:#f1f1f4;--ink:#2a2859;--dim:#6a6a86;
- --rule:rgba(42,40,89,.18);--hair:rgba(42,40,89,.09);--doc:#f9c66b;--docink:#2a2859;
- --mv:#ff8274;--sp:#6fe9ff;--sc:#43f8b6}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);
  -webkit-font-smoothing:antialiased}
@@ -29,9 +27,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 /* Three slots — wordmark, the four section links, About — so the links sit
  truly centred on the bar regardless of how wide the wordmark or the About
  button are (a flex "margin:auto" centre-trick only centres within the
- leftover space, not the whole bar). Mode toggle is gone: colour now follows
- the OS/device preference only (@media(prefers-color-scheme), below) — no
- button, no localStorage override to fight with it. */
+ leftover space, not the whole bar). There is no mode toggle and no longer any
+ mode to toggle: the site is dark, full stop, and does not follow the OS
+ preference either — one palette, no button, nothing to fall out of step. */
 .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;
  padding:14px 22px;border-bottom:1.5px solid var(--ink)}
 .wm{font-family:var(--narrow);font-weight:700;font-size:20px;letter-spacing:.05em;
@@ -126,10 +124,7 @@ main.abt{max-width:720px}
  loses nothing, it just leads with colour instead of with four digits. */
 .row.rb{align-items:center}
 .rbub{display:block;overflow:visible}
-.rbub .rh,.rbub .rc{mix-blend-mode:multiply}
-@media (prefers-color-scheme:dark){.rbub .rh,.rbub .rc{mix-blend-mode:screen}}
-:root[data-mode=dark] .rbub .rh,:root[data-mode=dark] .rbub .rc{mix-blend-mode:screen}
-:root[data-mode=light] .rbub .rh,:root[data-mode=light] .rbub .rc{mix-blend-mode:multiply}
+.rbub .rh,.rbub .rc{mix-blend-mode:screen}
 .rbub .rh{fill:var(--k);opacity:.28}
 .rbub .rc{fill:var(--k);opacity:.6}
 .row.rb .t{display:block}
@@ -389,22 +384,13 @@ a.opn:hover{border-color:var(--ink)}
 /* Soft-field constellation palette (chosen 2026-08-01): equal-luminance
  pastels that sit with the indigo ink — periwinkle / sage-teal / terracotta.
  --gaN = halo alpha, --gcN = core alpha per tier (singles/repeats/anchors).
- Both polarities designed, not inverted; the toggle stamps data-mode.
+ Dark only since 2026-08-26 — the light polarity is gone, not overridden.
  The figure is SVG, not canvas — Safari's advanced privacy protections noise
  2D-canvas painting and banner the page; SVG is untouched by them. Blending
  lives in CSS (multiply on light, screen on dark). */
-:root{--gpub:#6975cd;--gaca:#4a9486;--gpri:#cb7660;
- --ga0:.19;--ga1:.31;--ga2:.45;--gc0:.22;--gc1:.36;--gc2:.52}
-@media (prefers-color-scheme:dark){:root{--gpub:#8896eb;--gaca:#6ec4b4;--gpri:#e89678;
- --ga0:.16;--ga1:.27;--ga2:.42;--gc0:.18;--gc1:.31;--gc2:.48}}
-:root[data-mode=dark]{--gpub:#8896eb;--gaca:#6ec4b4;--gpri:#e89678;
+:root{--gpub:#8896eb;--gaca:#6ec4b4;--gpri:#e89678;
  --ga0:.16;--ga1:.27;--ga2:.42;--gc0:.18;--gc1:.31;--gc2:.48}
-:root[data-mode=light]{--gpub:#6975cd;--gaca:#4a9486;--gpri:#cb7660;
- --ga0:.19;--ga1:.31;--ga2:.45;--gc0:.22;--gc1:.36;--gc2:.52}
-.gate .gh,.gate .gc{mix-blend-mode:multiply}
-@media (prefers-color-scheme:dark){.gate .gh,.gate .gc{mix-blend-mode:screen}}
-:root[data-mode=dark] .gate .gh,:root[data-mode=dark] .gate .gc{mix-blend-mode:screen}
-:root[data-mode=light] .gate .gh,:root[data-mode=light] .gate .gc{mix-blend-mode:multiply}
+.gate .gh,.gate .gc{mix-blend-mode:screen}
 .gate .gh{opacity:calc(var(--t,1)*var(--k,1))}
 .gate .gc{opacity:calc(var(--t,1)*var(--k,1))}
 .gate .gu{opacity:calc(.62*var(--k,1))}
@@ -444,7 +430,7 @@ html[data-gate]{overflow:hidden}
 .gate a.d-rep::after{background:linear-gradient(180deg,rgba(20,19,46,.74),rgba(20,19,46,.93))}
 .gate a.d-pla::after{background:linear-gradient(180deg,rgba(9,22,58,.56),rgba(11,27,63,.92))}
 
-/* Each door cycles ten stills behind its scrim — the office ten project maps,
+/* Each door cycles fifteen stills behind its scrim — the office ten project maps,
  the platform a mix of UrbanistAI scenario work and real workshop photographs.
  Damiano's brief, 2026-08-25: slow and subtle, and the two must never look
  synchronised. So they run on deliberately non-harmonic holds (5s / 6.9s) with
