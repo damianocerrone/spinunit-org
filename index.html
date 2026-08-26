@@ -38,10 +38,9 @@
            width="136" height="56" loading="eager">
       <span class="g-h">We do research for <span class="u1">cities</span>,
       <span class="u2">ministries</span> and <span class="u3">development projects</span>.</span>
-      <span class="g-p">Quantitative and spatial: survey, movement and accessibility data,
-      analysed until it can carry a decision. Every project leaves its method written
-      down and its data with the client — 60 on record here, 41 with
-      reports to read.</span>
+      <span class="g-p">Developing methods and analytical approaches that help cities,
+      government agencies, and property owners make informed decisions on complex urban
+      problems.</span>
       <span class="g-go ap">Enter the website →</span>
     </a>
     <a class="g-col d-pla" href="https://coplanai.com" target="_blank" rel="noopener">
@@ -52,12 +51,8 @@
       <img class="g-mk cp" src="web/assets/coplanai-logo-white.svg" alt="CoPlanAI"
            width="104" height="27" loading="eager">
       <span class="g-h">A platform for collaborative AI planning.</span>
-      <span class="g-p">SPIN Unit builds and runs it. It turns what a community can imagine
-      into documented evidence of what people agree to want — a mandate a city can defend,
-      not pretty AI pictures. The institution brings the guardrails, residents bring local
-      knowledge, and the platform turns both into options that can be seen, tested and
-      agreed on. Before it we co-designed and ran UrbanistAI, used by cities, agencies and
-      UN country offices across Europe, the Gulf, Asia and Latin America.</span>
+      <span class="g-p">It turns what a community imagines into documented evidence of what
+      people agree to want — a mandate a city can defend, not pretty AI pictures.</span>
       <span class="g-go ap">Visit coplanai.com ↗</span>
     </a>
     <div class="g-col g-cli">
@@ -126,6 +121,8 @@ function rFrac(y){y=Math.max(Y0,Math.min(Y1,Math.round(y)));
 // workshop. Range is modest on purpose: 62 records are untyped and an
 // unrecorded kind must not read as a vanishing project.
 var WR=[0.018,0.021,0.027,0.036];
+// how much of the drawn circle is the mark rather than its fringe
+var DRAW=1.28;
 function wr(w){return WR[w]||WR[0];}
 
 var grouped={},counts={};
@@ -153,19 +150,19 @@ function layout(){
     list.forEach(function(p,i){
       var a=(ST[k]+SP[k]*((i+0.5)/list.length))*Math.PI/180;
       var rad=R0+(R-R0)*rFrac(p.y);
-      nodes.push({p:p,a:a,r:rad,r0:rad,rr:R*wr(p.w),g:k,
-                  cap:Math.max(3,Math.abs(rFrac(p.y+1)-rFrac(p.y))*(R-R0)*0.5)});
+      nodes.push({p:p,a:a,r:rad,r0:rad,rr:R*wr(p.w)*DRAW,g:k,
+                  cap:Math.max(4,Math.abs(rFrac(p.y+1)-rFrac(p.y))*(R-R0)*0.7)});
     });
   });
   // colliding marks fan apart ALONG THE RADIUS — the angle carries the client
   // group and must not move — capped at half the LOCAL band, which is uneven
-  for(var pass=0;pass<40;pass++){
+  for(var pass=0;pass<70;pass++){
     var moved=false;
     for(var i=0;i<nodes.length;i++)for(var j=i+1;j<nodes.length;j++){
       var A=nodes[i],B=nodes[j];
       var ax=cx+Math.cos(A.a)*A.r,ay=cy+Math.sin(A.a)*A.r;
       var bx=cx+Math.cos(B.a)*B.r,by=cy+Math.sin(B.a)*B.r;
-      var d=Math.hypot(ax-bx,ay-by),need=A.rr+B.rr+1.2;
+      var d=Math.hypot(ax-bx,ay-by),need=A.rr+B.rr+1.0;
       if(d>=need)continue;
       var push=(need-d)/2*0.6,dir=A.r<=B.r?-1:1;
       A.r=Math.max(A.r0-A.cap,Math.min(A.r0+A.cap,A.r+dir*push));
@@ -186,7 +183,7 @@ function draw(cx,cy,R,R0){
   var defs=el("defs",{});svg.appendChild(defs);
   GRP.forEach(function(k){
     var g=el("radialGradient",{id:"gg-"+k});
-    [[0,.95],[.58,.90],[.82,.48],[1,0]].forEach(function(st){
+    [[0,.97],[.66,.94],[.88,.52],[1,0]].forEach(function(st){
       var e=el("stop",{offset:st[0],"stop-opacity":st[1]});
       e.setAttribute("stop-color","var(--g"+k+")");g.appendChild(e);});
     defs.appendChild(g);});
@@ -224,7 +221,7 @@ function draw(cx,cy,R,R0){
         "stroke-dasharray":guess?"3 4":"none","stroke-linecap":"round",
         "class":"gth gs-"+sc}));}});
   nodes.forEach(function(n){
-    var c=el("circle",{cx:n.x,cy:n.y,r:n.rr*1.5,fill:"url(#gg-"+n.g+")",
+    var c=el("circle",{cx:n.x,cy:n.y,r:n.rr,fill:"url(#gg-"+n.g+")",
       "class":"gn gk-"+n.g});
     if(iso&&iso!==n.g)c.setAttribute("class","gn gk-"+n.g+" off");
     svg.appendChild(c);n.el=c;});
@@ -233,7 +230,7 @@ function draw(cx,cy,R,R0){
 function hit(ev){
   var r=svg.getBoundingClientRect(),x=ev.clientX-r.left,y=ev.clientY-r.top,best=null,bd=1e9;
   nodes.forEach(function(n){var d=Math.hypot(n.x-x,n.y-y);
-    if(d<Math.max(9,n.rr*1.6)&&d<bd){bd=d;best=n;}});
+    if(d<Math.max(9,n.rr*1.25)&&d<bd){bd=d;best=n;}});
   return best;
 }
 function showTip(n,pin){
