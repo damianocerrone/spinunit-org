@@ -120,9 +120,11 @@ function rFrac(y){y=Math.max(Y0,Math.min(Y1,Math.round(y)));
 // was, so nothing here claims to know by how much a project outweighs a
 // workshop. Range is modest on purpose: 62 records are untyped and an
 // unrecorded kind must not read as a vanishing project.
-var WR=[0.018,0.021,0.027,0.036];
-// how much of the drawn circle is the mark rather than its fringe
-var DRAW=1.28;
+var WR=[0.0132,0.0155,0.0207,0.0282];
+// the drawn circle including its fringe. Collision still tests THIS rather than
+// the bare mark, which the artifact did not — smaller marks plus a true
+// separation test is strictly crisper than either alone.
+var DRAW=1.5;
 function wr(w){return WR[w]||WR[0];}
 
 var grouped={},counts={};
@@ -141,7 +143,7 @@ function layout(){
   if(!r.width||!r.height)return;
   var W=r.width,H=r.height;
   svg.setAttribute("viewBox","0 0 "+W+" "+H);
-  var cx=W/2,cy=H*0.5,R=Math.min(W,H)*0.462,R0=R*0.30;
+  var cx=W/2,cy=H*0.5,R=Math.min(W,H)*0.462,R0=R*0.339;
   var free=360-GAPD*GRP.length,cur=96,ST={},SP={};
   GRP.forEach(function(k){ST[k]=cur;SP[k]=free*counts[k]/P.length;cur+=SP[k]+GAPD;});
   nodes=[];
@@ -183,7 +185,7 @@ function draw(cx,cy,R,R0){
   var defs=el("defs",{});svg.appendChild(defs);
   GRP.forEach(function(k){
     var g=el("radialGradient",{id:"gg-"+k});
-    [[0,.97],[.66,.94],[.88,.52],[1,0]].forEach(function(st){
+    [[0,.95],[.58,.90],[.82,.48],[1,0]].forEach(function(st){
       var e=el("stop",{offset:st[0],"stop-opacity":st[1]});
       e.setAttribute("stop-color","var(--g"+k+")");g.appendChild(e);});
     defs.appendChild(g);});
@@ -213,13 +215,14 @@ function draw(cx,cy,R,R0){
       var A=list[i],B=list[i+1];
       var mx=(A.x+B.x)/2,my=(A.y+B.y)/2;
       var qx=cx+(mx-cx)*0.52,qy=cy+(my-cy)*0.52;
-      var guess=A.p.p||B.p.p;
       svg.appendChild(el("path",{d:"M"+A.x.toFixed(1)+","+A.y.toFixed(1)+
         "Q"+qx.toFixed(1)+","+qy.toFixed(1)+" "+B.x.toFixed(1)+","+B.y.toFixed(1),
-        fill:"none",stroke:"var(--ink)","stroke-width":0.95,
-        "stroke-opacity":guess?0.10:0.24,
-        "stroke-dasharray":guess?"3 4":"none","stroke-linecap":"round",
+        fill:"none",stroke:"var(--ink)","stroke-width":0.9,
+        "stroke-opacity":0.18,"stroke-linecap":"round",
         "class":"gth gs-"+sc}));}});
+  [[-5.5,-8],[5.5,-8],[-5.5,0],[5.5,0],[-5.5,8],[5.5,8]].forEach(function(d){
+    svg.appendChild(el("circle",{cx:cx+d[0]*(R/200),cy:cy+d[1]*(R/200),
+      r:2.6*(R/200),fill:"var(--ink)","fill-opacity":0.82}));});
   nodes.forEach(function(n){
     var c=el("circle",{cx:n.x,cy:n.y,r:n.rr,fill:"url(#gg-"+n.g+")",
       "class":"gn gk-"+n.g});
