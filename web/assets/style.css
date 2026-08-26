@@ -498,8 +498,16 @@ html[data-gate]{overflow:hidden}
 .gate .k-pub{background:color-mix(in srgb,var(--gpub) 45%,var(--bg))}
 .gate .k-aca{background:color-mix(in srgb,var(--gaca) 45%,var(--bg))}
 .gate .k-pri{background:color-mix(in srgb,var(--gpri) 45%,var(--bg))}
-.gate .g-cap{font:400 8.5px/1.6 var(--mono);letter-spacing:.11em;text-transform:uppercase;
- color:var(--dim);margin-top:9px}
+/* The wall under the figure. It used to be one 8.5px uppercase mono line doing
+ two different jobs — stating what the practice has done, and explaining how to
+ use the graphic. Split in two: the CLAIM is set as prose at reading size with
+ the numbers picked out, the MECHANICS stay small because they are an aside. */
+.gate .g-stat{font:400 1.0625rem/1.5 var(--sans);color:var(--ink);
+ margin:16px 0 0;max-width:46ch;letter-spacing:-.005em}
+.gate .g-stat b{font-weight:600;font-variant-numeric:tabular-nums;
+ box-shadow:inset 0 -.35em 0 rgba(136,150,235,.22)}
+.gate .g-cap{font:400 9.5px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+ color:var(--dim);margin-top:12px;display:block}
 .gate .g-legend{display:flex;gap:14px 28px;align-items:center;justify-content:space-between;
  padding:10px 22px;border-top:1px solid var(--rule);font:400 9px/1.6 var(--mono);
  letter-spacing:.1em;text-transform:uppercase;color:var(--dim);flex-wrap:wrap;
