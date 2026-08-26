@@ -455,10 +455,16 @@ html[data-gate]{overflow:hidden}
 .gate .d-rep .g-go,.gate .d-pla .g-go{color:#fff;border-bottom-color:rgba(255,255,255,.72)}
 /* THE OFFICE / THE PLATFORM: the label is what the visitor is choosing between,
  so it leads the door and is built to carry — bigger, brighter, on its own rule. */
-.gate .d-rep .g-eb,.gate .d-pla .g-eb{font-size:.875rem;font-weight:500;letter-spacing:.2em;
- color:#fff;display:inline-flex;align-items:center;gap:9px}
-.gate .d-rep .g-eb::before,.gate .d-pla .g-eb::before{content:"";width:22px;height:2px;
+.gate .d-rep .g-eb,.gate .d-pla .g-eb,.gate .g-cli .g-eb{font-size:.875rem;
+ font-weight:500;letter-spacing:.2em;display:inline-flex;align-items:center;gap:9px}
+.gate .d-rep .g-eb,.gate .d-pla .g-eb{color:#fff}
+.gate .g-cli .g-eb{color:var(--ink)}
+.gate .d-rep .g-eb::before,.gate .d-pla .g-eb::before,
+.gate .g-cli .g-eb::before{content:"";width:22px;height:2px;
  background:currentColor;display:block;flex:none}
+/* the heading is gone from this column — the label now says the same thing, and
+   the figure gets the height back */
+.gate .g-cli{padding-top:24px}
 /* The marks, deliberately small: they identify the door, they are not the
  headline. White-only files, because the door is dark in both themes. */
 .g-mk{display:block;margin:18px 0 4px}
@@ -474,7 +480,7 @@ html[data-gate]{overflow:hidden}
 .gate .g-go{margin-top:auto;align-self:flex-start;font:400 .8125rem/1 var(--mono);
  letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--ink);
  padding-bottom:2px}
-.gate .g-fig{position:relative;flex:1;min-height:240px;margin-top:4px}
+.gate .g-fig{position:relative;flex:1;min-height:300px;margin-top:2px}
 .gate .g-fig svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 /* the sector key: rows under the figure, not boxes floating on it */
 /* One row, four keys. The arc labels that used to ring the figure are gone:

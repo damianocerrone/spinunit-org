@@ -60,9 +60,8 @@
       UN country offices across Europe, the Gulf, Asia and Latin America.</span>
       <span class="g-go ap">Visit coplanai.com ↗</span>
     </a>
-    <div class="g-col">
-      <span class="g-eb">The clients</span>
-      <span class="g-h">Our clients and partners.</span>
+    <div class="g-col g-cli">
+      <span class="g-eb">Our clients and partners</span>
       <div class="g-fig"><svg id="gSvg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"></svg></div>
       <div class="g-key" role="group" aria-label="Client type">
         <button class="g-kk" data-sec="pub" aria-pressed="false"><i class="k-pub"></i>Public · 84</button><button class="g-kk" data-sec="aca" aria-pressed="false"><i class="k-aca"></i>Academia · 26</button><button class="g-kk" data-sec="pri" aria-pressed="false"><i class="k-pri"></i>Private · 38</button><button class="g-kk" data-sec="self" aria-pressed="false"><i class="k-self"></i>In-house project · 22</button>
@@ -71,7 +70,6 @@
         <b>92 organisations</b> in <b>27 countries</b>, and run
         <b>22</b> of our own — through the research office, CoPlanAI and
         UrbanistAI, all billed by SPIN Unit.</p>
-      <span class="g-cap">One mark per engagement · distance from the centre is the year, and each ring is as wide as that year was busy · a thread joins work of the same kind · hover to read, click a colour to isolate</span>
     </div>
   </div>
   <div class="g-legend">
@@ -146,7 +144,7 @@ function layout(){
   if(!r.width||!r.height)return;
   var W=r.width,H=r.height;
   svg.setAttribute("viewBox","0 0 "+W+" "+H);
-  var cx=W/2,cy=H*0.5,R=Math.min(W,H)*0.47,R0=R*0.30;
+  var cx=W/2,cy=H*0.5,R=Math.min(W,H)*0.462,R0=R*0.30;
   var free=360-GAPD*GRP.length,cur=96,ST={},SP={};
   GRP.forEach(function(k){ST[k]=cur;SP[k]=free*counts[k]/P.length;cur+=SP[k]+GAPD;});
   nodes=[];
